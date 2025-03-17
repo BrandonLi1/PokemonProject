@@ -25,17 +25,18 @@ public class GridGame {
 
 
     private void setupBoard() {
-        board=new Space[8][8];
+        board=new Space[20][20];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 board[i][j]= new Space("_");
             }
         }
-        board[0][7]=new Space("X");
-        board[7][0]=player;
-        for (int i = 1; i < 6; i++) {
-            if (Math.random()>=.5) {
-                board[i][(int) (Math.random()*8)] = new Pokemon("#", //pokemontype);
+        board[0][19]=new Space("G");
+        board[19][0]=player;
+        board[19][19]=new Space("P");
+        for (int i = 1; i < 18; i++) {
+            if (Math.random()>=.2) {
+                board[i][(int) (Math.random()*19)] = new Pokemon("#");
             }
         }
     }
@@ -53,16 +54,15 @@ public class GridGame {
     public void play() {
         setupBoard();
         playerPosition();
-        while (board[0][7] != player) {
+        while (board[0][19] != player) {
             printBoard();
             System.out.print("Enter a direction(W, A, S, D): ");
             String move = scanner.nextLine();
             if (move.equals("W")) {
                 if (y != 0) {
                     checkPokemon("W");
-                    player.move();
+                    board[y][x] = new Space(tile(y, x-1));
                     board[y-1][x] = player;
-                    board[y][x] = new Space("_");
                 } else {
                     System.out.println("Out of bounds");
                 }
@@ -70,79 +70,77 @@ public class GridGame {
             if (move.equals("A")) {
                 if (x != 0) {
                     checkPokemon("A");
-                    player.move();
+                    board[y][x] = new Space(tile(y, x-1));
                     board[y][x - 1] = player;
-                    board[y][x] = new Space("_");
+
                 }else {
                     System.out.println("Out of bounds");
                 }
             }
             if (move.equals("S")) {
-                if (y != 7) {
+                if (y != 19) {
                     checkPokemon("S");
-                    player.move();
+                    board[y][x] = new Space(tile(y, x-1));
                     board[y+1][x] = player;
-                    board[y][x] = new Space("_");
                 }else {
                     System.out.println("Out of bounds");
                 }
             }
             if (move.equals("D")) {
-                if (x != 7) {
+                if (x != 19) {
                     checkPokemon("D");
-                    player.move();
+                    board[y][x] = new Space(tile(y, x-1));
                     board[y][x + 1] = player;
-                    board[y][x] = new Space("_");
                 }else {
                     System.out.println("Out of bounds");
                 }
             }
+
             if (move.equals("WWDDLRLRBA")) { //funny konami code cheat code
 
             }
         }
-        System.out.println("You win!");
-        System.out.println("Score: " + player.getScore());
-        System.out.println("Moves: " + player.getMoves());
+        //run the gym fight
     }
     private void checkPokemon(String move) {
         playerPosition();
         int x= (int)(Math.random()*10);
         if (move.equals("W")) {
             if (board[y-1][x].getSymbol().equals("#")) {
-                if (x==0) {
-
-                }
+               grassCheck();
             }
         }
         if (move.equals("A")) {
             if (board[y][x-1].getSymbol().equals("#")) {
-                if (x==0) {
-
-                }
+                grassCheck();
             }
         }
         if (move.equals("S")) {
             if (board[y+1][x].getSymbol().equals("#")) {
-                if (x==0) {
-
-                }
+               grassCheck();
             }
         }
         if (move.equals("D")) {
             if (board[y][x+1].getSymbol().equals("#")) {
-                if (x==0) {
-
-                }
+              grassCheck();
             }
         }
     }
 
-    private void encounter() {
-
+    public void grassCheck() {
+        int x=(int)(Math.random()*10);
+        if (x==0) {
+            encounter();
+        }
     }
 
+    public void encounter() {
+        //window for fight
+    }
 
+    private String tile(int y, int x) {
+        return board[x][y].getSymbol();
+    }
 
 
     private void playerPosition() {
