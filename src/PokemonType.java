@@ -6,10 +6,13 @@ public class PokemonType {
     private String name;
     private int power;
     private int xp;
-    public PokemonType(int level, int health, String name) {
+    private int currentHealth;
+    private boolean burning;
+    public PokemonType(int level, int health, String name, boolean burning) {
         this.level=level;
         this.health=health;
         this.name=name;
+        burning=false;
     }
 
     public int getLevel() {
@@ -62,7 +65,21 @@ public class PokemonType {
         this.power = power;
     }
 
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
 
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
+    }
+
+    public boolean isBurning() {
+        return burning;
+    }
+
+    public void setBurning(boolean burning) {
+        this.burning = burning;
+    }
 
     public boolean checkHit() {
         int x=(int) (Math.random()*100);
@@ -76,5 +93,9 @@ public class PokemonType {
         int x=0;
         x=(int)((((2.0*level)/5.0+2.0)*power)/50);
         return x;
+    }
+
+    public void Restore(PokemonType self) {
+        setCurrentHealth(currentHealth+(int)(health*.5));
     }
 }

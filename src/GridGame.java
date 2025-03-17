@@ -97,6 +97,9 @@ public class GridGame {
                     System.out.println("Out of bounds");
                 }
             }
+            if (move.equals("WWDDLRLRBA")) { //funny konami code cheat code
+
+            }
         }
         System.out.println("You win!");
         System.out.println("Score: " + player.getScore());
