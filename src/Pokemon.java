@@ -6,6 +6,10 @@ public class Pokemon extends Space {
         this.pokemonType=pokemonType;
     }
 
+    public Pokemon(String symbol) {
+        super(symbol);
+    }
+
     public PokemonType getPokemonType() {
         return pokemonType;
     }
