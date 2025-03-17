@@ -4,6 +4,8 @@ public class PokemonType {
     private int level;
     private int health;
     private String name;
+    private int power;
+    private int xp;
     public PokemonType(int level, int health, String name) {
         this.level=level;
         this.health=health;
@@ -42,11 +44,37 @@ public class PokemonType {
         this.accuracy = accuracy;
     }
 
+    public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
+    //make xp formula bruv
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+
+
     public boolean checkHit() {
         int x=(int) (Math.random()*100);
         if (x<accuracy) {
             return true;
         }
         return false;
+    }
+
+    public int checkDamage() {
+        int x=0;
+        x=(int)((((2.0*level)/5.0+2.0)*power)/50);
+        return x;
     }
 }
