@@ -1,48 +1,53 @@
 public class Water extends PokemonType{
     public Water(int level, int health, String name) {
-        super(level, health, name);
+        super(level, health, name,false);
     }
 
 
-    public void Aquajet(){
+    public void Aquajet(PokemonType target){
         setAccuracy(100);
         if (checkHit()) {
             setPower(40);
-            checkDamage();//returns number for damage
+            int damage=(int)(checkDamage()*checkEffective(target));
+            target.setCurrentHealth(target.getCurrentHealth()-damage);//returns number for damage
         }
     }
-    public void Aquaring(){
+    public void Aquaring(PokemonType target){
         setAccuracy(100);
         if (checkHit()) {
             setHealth(getHealth() + 10);
         }
     }
-    public void Bubble(){
+    public void Bubble(PokemonType target){
         setAccuracy(100);
         if(checkHit()){
             setPower(40);
-            checkDamage();
+            int damage=(int)(checkDamage()*checkEffective(target));
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
 
         }
     }
-    public void Hydropump(){
+    public void Hydropump(PokemonType target){
         setAccuracy(80);
         if(checkHit()){
             setPower(110);
-            checkDamage();
+            int damage=(int)(checkDamage()*checkEffective(target));
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
         }
     }
-    public void Bubblebeam(){
+    public void Bubblebeam(PokemonType target){
         setAccuracy(100);
         if(checkHit()){
-            setPower(65);
+            int damage=(int)(checkDamage()*checkEffective(target));
+            target.setCurrentHealth(target.getCurrentHealth()-damage);setPower(65);
         }
     }
-    public void Razorshell(){
+    public void Razorshell(PokemonType target){
         setAccuracy(95);
         if(checkHit()){
             setPower(95);
-            checkDamage();
+            int damage=(int)(checkDamage()*checkEffective(target));
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
         }
     }
     private double checkEffective(PokemonType target){
