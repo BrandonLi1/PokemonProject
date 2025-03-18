@@ -5,7 +5,8 @@ public class PokemonType {
     private int health;
     private String name;
     private int power;
-    private int xp;
+    private double xp;
+    private double requiredXP;
     private int currentHealth;
     private boolean burning;
     public PokemonType(int level, int health, String name, boolean burning) {
@@ -13,6 +14,7 @@ public class PokemonType {
         this.health=health;
         this.name=name;
         burning=false;
+        requiredXP = Math.pow(level, 3);
     }
 
     public int getLevel() {
@@ -47,7 +49,7 @@ public class PokemonType {
         this.accuracy = accuracy;
     }
 
-    public int getXp() {
+    public double getXp() {
         return xp;
     }
 
@@ -55,6 +57,13 @@ public class PokemonType {
         this.xp = xp;
     }
 
+    public void checkLevelUp() {
+        if (xp > requiredXP) {
+            level++;
+            xp -= requiredXP;
+            requiredXP = Math.pow(level, 3);
+        }
+    }
     //make xp formula bruv
 
     public int getPower() {
