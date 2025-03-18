@@ -11,12 +11,13 @@ public class GridGame {
 
     public GridGame() {
         scanner = new Scanner(System.in);
+    }
+
+    public void Start() {
         createPlayer();
         setupBoard();
         play();
     }
-
-
     private void createPlayer() {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine();
