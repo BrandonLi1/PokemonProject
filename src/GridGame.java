@@ -51,9 +51,12 @@ public class GridGame {
         board[0][19]=new Space("G");
         board[19][0]=player;
         board[19][19]=new Space("P");
-        for (int i = 1; i < 18; i++) {
-            if (Math.random()>=.2) {
-                board[i][(int) (Math.random()*19)] = new Pokemon("#");
+        for (int i = 1; i < 19; i++) {
+            for (int j = 18; j >0; j--) {
+                double x = Math.random();
+                if (x<=.3) {
+                    board[i][j]=new Space("#");
+                }
             }
         }
     }
