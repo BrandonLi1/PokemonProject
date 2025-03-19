@@ -22,6 +22,22 @@ public class GridGame {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine();
         player = new Player(name);
+        System.out.print("Pick a start (not)Pokemon ((C)harmander, (S)quirtle, (B)ulbasaur): ");
+        String Starter = scanner.nextLine().toUpperCase();
+        if (Starter.equals("C")) {
+            player.party[0]=new PokemonType(5, 39, "Charmander", false);
+        }
+        if (Starter.equals("S")) {
+            player.party[0]=new PokemonType(5, 44, "Squirtle", false);
+        }
+        if (Starter.equals("B")) {
+            player.party[0]=new PokemonType(5, 45, "Bulbasaur", false);
+        }
+        if (Starter.equals("WWSSADADBA")) {
+            player.party[0]=new PokemonType(100, 297, "Charizard", false);
+            player.party[1]=new PokemonType(100, 299, "Blastoise", false);
+            player.party[2]=new PokemonType(100, 301, "Venusaur", false);
+        }
     }
 
 
@@ -58,11 +74,11 @@ public class GridGame {
         while (board[0][19] != player) {
             printBoard();
             System.out.print("Enter a direction(W, A, S, D): ");
-            String move = scanner.nextLine();
+            String move = scanner.nextLine().toUpperCase();
             if (move.equals("W")) {
                 if (y != 0) {
                     checkPokemon("W");
-                    board[y][x] = new Space(tile(y, x-1));
+                    board[y][x] = new Space(tile(y-1, x));
                     board[y-1][x] = player;
                 } else {
                     System.out.println("Out of bounds");
@@ -81,7 +97,7 @@ public class GridGame {
             if (move.equals("S")) {
                 if (y != 19) {
                     checkPokemon("S");
-                    board[y][x] = new Space(tile(y, x-1));
+                    board[y][x] = new Space(tile(y+1, x));
                     board[y+1][x] = player;
                 }else {
                     System.out.println("Out of bounds");
@@ -90,14 +106,14 @@ public class GridGame {
             if (move.equals("D")) {
                 if (x != 19) {
                     checkPokemon("D");
-                    board[y][x] = new Space(tile(y, x-1));
+                    board[y][x] = new Space(tile(y, x+1));
                     board[y][x + 1] = player;
                 }else {
                     System.out.println("Out of bounds");
                 }
             }
 
-            if (move.equals("WWDDLRLRBA")) { //funny konami code cheat code
+            if (move.equals("WWSSADADBA")) { //funny konami code cheat code
 
             }
         }
