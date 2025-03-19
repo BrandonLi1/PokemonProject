@@ -26,15 +26,14 @@ public class PokeCenter extends Space{
             System.out.println("here is all the items you can buy");
             System.out.println("1. potion");
             System.out.println("2. pokeball");
-            System.out.println("3. revive");
             System.out.print("type the number of the item you wish to buy: ");
             response2 = scanner.nextInt();
             if(response2 == 1){
                 // add potion item to the inventory
+                Player.addItemBad(new Potions(0,1,25));
             } else if(response2 == 2){
+                Player.addItemBad(new Pokeballs(0,1,25));
                 // add pokeball to the inventory
-            } else if (response2 == 3){
-                // add a revive to the inventory
             } else {
                 System.out.println("invalid entry");
             }
