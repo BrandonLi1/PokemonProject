@@ -2,7 +2,6 @@ import java.util.ArrayList;
 public class Player extends Space {
     private String name;
     public PokemonType[] party;
-    private PokemonType[] party;
     public static ArrayList<Items> itembag = new ArrayList<>();
 
     public Player(String name) {
