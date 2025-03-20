@@ -77,8 +77,56 @@ public class GridGame {
         playerPosition();
         while (board[0][19] != player) {
             printBoard();
-            System.out.print("Enter a direction(W, A, S, D): ");
-            String move = scanner.nextLine().toUpperCase();
+            boolean validInput = false;
+            while (!validInput) {
+                System.out.print("Enter a direction(W, A, S, D): ");
+                String move = scanner.nextLine().toUpperCase();
+
+                if (move.equals("W")) {
+                    if (y != 0) {
+                        checkPokemon("W");
+                        temp=board[y-1][x];
+                        validInput = true;
+                    } else {
+                        System.out.println("You will go out of bounds!");
+                    }
+                } else if (move.equals("A")) {
+                    if (y != 0) {
+                        checkPokemon("A");
+                        temp=board[y][x-1];
+                        validInput = true;
+                    } else {
+                        System.out.println("You will go out of bounds!");
+                    }
+                } else if (move.equals("S")) {
+                    if (y != 19) {
+                        checkPokemon("S");
+                        temp=board[y+1][x];
+                        validInput = true;
+                    } else {
+                        System.out.println("You will go out of bounds!");
+                    }
+                } else if (move.equals("D")) {
+                    if (x != 19) {
+                        checkPokemon("D");
+                        temp=board[y][x+1];
+                        validInput = true;
+                    } else {
+                        System.out.println("You will go out of bounds!");
+                    }
+                } else {
+                    System.out.println("INVALID MOVE! Try again.");
+                }
+
+                if (temp.equals("#")) {
+                    board[]
+                } else {
+
+                }
+                board[]
+            }
+
+            /*
             if (move.equals("W")) {
                 if (y != 0) {
                     checkPokemon("W");
@@ -136,7 +184,7 @@ public class GridGame {
                     System.out.println("Out of bounds");
                 }
             }
-
+*/
             if (move.equals("WWSSADADBA")) { //funny konami code cheat code
                 System.out.println(player.party[0].getName());
             }
@@ -179,6 +227,25 @@ public class GridGame {
         //window for fight
     }
 
+    private int playerY() {
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[0].length; c++) {
+                if (board[r][c].equals(player)) {
+                    return r;
+                }
+            }
+        }
+    }
+
+    private int playerX() {
+        for (Space[] spaces : board) {
+            for (int c = 0; c < board[0].length; c++) {
+                if (spaces[c].equals(player)) {
+                    return c;
+                }
+            }
+        }
+    }
 
     private void playerPosition() {
         for (int i = 0; i < board.length; i++) {
