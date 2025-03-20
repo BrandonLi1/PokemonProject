@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-
 public class GridGame {
     private Space[][] board;
-    private Player player;
+    public static Player player;
     private Scanner scanner;
     private int y;
     private int x;
+    private Space temp;
 
 
     public GridGame() {
@@ -22,21 +22,22 @@ public class GridGame {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine();
         player = new Player(name);
-        System.out.print("Pick a start (not)Pokemon ((C)harmander, (S)quirtle, (B)ulbasaur): ");
-        String Starter = scanner.nextLine().toUpperCase();
-        if (Starter.equals("C")) {
-            player.party[0]=new PokemonType(5, 39, "Charmander", false);
-        }
-        if (Starter.equals("S")) {
-            player.party[0]=new PokemonType(5, 44, "Squirtle", false);
-        }
-        if (Starter.equals("B")) {
-            player.party[0]=new PokemonType(5, 45, "Bulbasaur", false);
-        }
-        if (Starter.equals("WWSSADADBA")) {
+        if (name.equals("Z")) {
             player.party[0]=new PokemonType(100, 297, "Charizard", false);
             player.party[1]=new PokemonType(100, 299, "Blastoise", false);
             player.party[2]=new PokemonType(100, 301, "Venusaur", false);
+        } else {
+            StartWindow x =  new StartWindow();
+                try {
+                    synchronized (StartWindow.window) {
+                        while (StartWindow.window.isVisible()) {
+                            StartWindow.window.wait(10);
+                        }
+
+                    }
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
         }
     }
 
@@ -81,7 +82,12 @@ public class GridGame {
             if (move.equals("W")) {
                 if (y != 0) {
                     checkPokemon("W");
-                    board[y][x] = new Space(tile(y-1, x));
+                    temp=board[y-1][x];
+                    if (temp.getSymbol().equals("#")) {
+                        board[y][x] = new Space("#");
+                    } else {
+                        board[y][x]= new Space("_");
+                    }
                     board[y-1][x] = player;
                 } else {
                     System.out.println("Out of bounds");
@@ -90,7 +96,12 @@ public class GridGame {
             if (move.equals("A")) {
                 if (x != 0) {
                     checkPokemon("A");
-                    board[y][x] = new Space(tile(y, x-1));
+                    temp=board[y][x-1];
+                    if (temp.getSymbol().equals("#")) {
+                        board[y][x] = new Space("#");
+                    } else {
+                        board[y][x]= new Space("_");
+                    }
                     board[y][x - 1] = player;
 
                 }else {
@@ -100,7 +111,12 @@ public class GridGame {
             if (move.equals("S")) {
                 if (y != 19) {
                     checkPokemon("S");
-                    board[y][x] = new Space(tile(y+1, x));
+                    temp=board[y+1][x];
+                    if (temp.getSymbol().equals("#")) {
+                        board[y][x] = new Space("#");
+                    } else {
+                        board[y][x]= new Space("_");
+                    }
                     board[y+1][x] = player;
                 }else {
                     System.out.println("Out of bounds");
@@ -109,7 +125,12 @@ public class GridGame {
             if (move.equals("D")) {
                 if (x != 19) {
                     checkPokemon("D");
-                    board[y][x] = new Space(tile(y, x+1));
+                    temp=board[y-1][x+1];
+                    if (temp.getSymbol().equals("#")) {
+                        board[y][x] = new Space("#");
+                    } else {
+                        board[y][x]= new Space("_");
+                    }
                     board[y][x + 1] = player;
                 }else {
                     System.out.println("Out of bounds");
@@ -117,7 +138,7 @@ public class GridGame {
             }
 
             if (move.equals("WWSSADADBA")) { //funny konami code cheat code
-
+                System.out.println(player.party[0].getName());
             }
         }
         //run the gym fight
@@ -158,10 +179,6 @@ public class GridGame {
         //window for fight
     }
 
-    private String tile(int y, int x) {
-        return board[x][y].getSymbol();
-    }
-
 
     private void playerPosition() {
         for (int i = 0; i < board.length; i++) {
@@ -173,4 +190,7 @@ public class GridGame {
             }
         }
     }
+
+
+
 }
