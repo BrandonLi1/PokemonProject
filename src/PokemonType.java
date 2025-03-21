@@ -69,10 +69,12 @@ public class PokemonType {
     }
 
     public void checkLevelUp() {
-        if (xp > requiredXP) {
+        while (xp > requiredXP) {
             level++;
             xp -= requiredXP;
             requiredXP = Math.pow(level, 3);
+            setHealth(getHealth()+2);
+            currentHealth=getHealth();
         }
     }
     //make xp formula bruv

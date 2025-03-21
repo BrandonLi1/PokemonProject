@@ -130,11 +130,6 @@ public class StartWindow{
         choice2.setVisible(false);
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 39, "Charmander", false);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         window.dispose();
     }
     public void bulbasaur() {
@@ -143,11 +138,6 @@ public class StartWindow{
         choice2.setVisible(false);
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 45, "Bulbasaur", false);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         window.dispose();
     }
     public void squirtle() {
@@ -155,16 +145,11 @@ public class StartWindow{
         choice1.setVisible(false);
         choice2.setVisible(false);
         choice3.setVisible(false);
-        GridGame.player.party[0]=new PokemonType(5, 44, "Squirtle", false);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        GridGame.player.party[0] = new PokemonType(5, 44, "Squirtle", false);
         window.dispose();
     }
 
-    public class choiceHandler implements ActionListener {
+        public class choiceHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String position= e.getActionCommand();
             if (position.equals("charmander")) {
