@@ -160,6 +160,7 @@ public class GridGame {
                     player.party[i].setCurrentHealth(player.party[i].getHealth());
                     board[19][0]=new Space("_");
                     board[0][18]=player;
+                    playerPosition();
                 }
                 count--;
             }
