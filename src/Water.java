@@ -1,5 +1,5 @@
 public class Water extends PokemonType{
-    public Water(int level, int health, String name) {
+    public Water(int level, int health, String name,String stage, String evolve) {
         super(level, health, name,false);
     }
 
