@@ -1,4 +1,4 @@
-name,pokedex,hp,Type1,stage,evolve
+name,pokedex number,hp,Type 1,stage,evolve
 Bulbasaur,1,45,Grass,1,y
 Ivysaur,2,60,Grass,2,y
 Venusaur,3,80,Grass,3,n
