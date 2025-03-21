@@ -12,7 +12,7 @@ public class FightWindow {
     JButton fight, run, bag, move1, move2, move3, move4, pokemon;
 
     Font buttonFont = new Font("Times New Roman", Font.PLAIN, 40);
-    Font textFont = new Font("Tiems New Roman", Font.PLAIN, 30);
+    Font textFont = new Font("Tiems New Roman", Font.PLAIN, 100);
 
     JTextArea mainTextArea, ownStats, enemyStats;
 
@@ -28,7 +28,7 @@ public class FightWindow {
 
     public void createGameScreen() {
         screen=new JFrame();
-        screen.setSize(800, 600);
+        screen.setSize(1500, 1300);
         screen.getContentPane().setBackground(Color.black);
         screen.setLayout(null); //necessary to create custom layout
         screen.setVisible(true);
@@ -36,8 +36,9 @@ public class FightWindow {
 
         //panels
         actionPanel= new JPanel();
-        actionPanel.setBounds(400, 400, 200, 200);
+        actionPanel.setBounds(600, 700, 900, 300);
         actionPanel.setBackground(Color.black);
+        actionPanel.setLayout(new GridLayout(2, 2));
         actionPanel.setVisible(true);
 
         movePanel=new JPanel();
@@ -50,6 +51,22 @@ public class FightWindow {
         pokemonPanel.setBackground(Color.blue);
         pokemonPanel.setVisible(false);
 
+        mainTextPanel=new JPanel();
+        mainTextPanel.setBounds(0, 700, 600, 300);;
+        mainTextPanel.setBackground(Color.white);
+        con.add(mainTextPanel);
+
+
+
+        //textAreas
+        mainTextArea=new JTextArea();
+        mainTextArea.setText("What will you do?");
+        mainTextArea.setBounds(0, 700, 600, 300);
+        mainTextArea.setBackground(Color.white);
+        mainTextArea.setForeground(Color.black);
+        mainTextArea.setFont(textFont);
+        mainTextArea.setLineWrap(true);
+        mainTextPanel.add(mainTextArea);
 
         //buttons section
         createButtons();
@@ -118,6 +135,7 @@ public class FightWindow {
 
     private void createButtons() {
         fight=new JButton("Fight");
+        fight.setSize(200, 100);
         fight.setBackground(Color.red);
         fight.setForeground(Color.white);
         fight.setFont(buttonFont);
@@ -127,6 +145,7 @@ public class FightWindow {
         fight.addActionListener(choiceHandler);
 
         run=new JButton("Run");
+        run.setSize(200, 100);
         run.setBackground(Color.blue);
         run.setForeground(Color.white);
         run.setFont(buttonFont);
@@ -136,6 +155,7 @@ public class FightWindow {
         run.addActionListener(choiceHandler);
 
         bag=new JButton("Bag");
+        bag.setSize(200, 100);
         bag.setBackground(Color.orange);
         bag.setForeground(Color.white);
         bag.setFont(buttonFont);
@@ -145,11 +165,12 @@ public class FightWindow {
         bag.addActionListener(choiceHandler);
 
         pokemon=new JButton("Pokemon");
+        pokemon.setSize(200, 100);
         pokemon.setBackground(Color.green);
         pokemon.setForeground(Color.white);
         pokemon.setFont(buttonFont);
         pokemon.setFocusPainted(false);
-        pokemonPanel.add(pokemon);
+        actionPanel.add(pokemon);
         pokemon.setActionCommand("pokemon");
         pokemon.addActionListener(choiceHandler);
 
