@@ -79,7 +79,7 @@ public class StartWindow{
 
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(250, 350, 300, 150);
-        choiceButtonPanel.setBackground(Color.red);
+        choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(3, 1));
         con.add(choiceButtonPanel);
 
@@ -91,6 +91,7 @@ public class StartWindow{
         choiceButtonPanel.add(choice1);
         choice1.setActionCommand("charmander");
         choice1.addActionListener(choiceHandler);
+        choiceButtonPanel.add(choice1);
 
         choice2=new JButton("Bulbasaur");
         choice2.setBackground(Color.black);
@@ -129,6 +130,11 @@ public class StartWindow{
         choice2.setVisible(false);
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 39, "Charmander", false);
+        try {
+            wait(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         window.dispose();
     }
     public void bulbasaur() {
@@ -137,6 +143,11 @@ public class StartWindow{
         choice2.setVisible(false);
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 45, "Bulbasaur", false);
+        try {
+            wait(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         window.dispose();
     }
     public void squirtle() {
@@ -145,6 +156,11 @@ public class StartWindow{
         choice2.setVisible(false);
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 44, "Squirtle", false);
+        try {
+            wait(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         window.dispose();
     }
 
