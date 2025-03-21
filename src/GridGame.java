@@ -78,6 +78,9 @@ public class GridGame {
         playerPosition();
         int count=0;
         while (board[0][19] != player) {
+            if (board[19][19]!=player) {
+                board[19][19]=new Space("P");
+            }
             printBoard();
                 System.out.print("Enter a direction(W, A, S, D): ");
                 String move = scanner.nextLine().toUpperCase();
