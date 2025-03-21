@@ -131,7 +131,7 @@ public class StartWindow{
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 39, "Charmander", false);
         try {
-            wait(3000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -144,7 +144,7 @@ public class StartWindow{
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 45, "Bulbasaur", false);
         try {
-            wait(3000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -157,7 +157,7 @@ public class StartWindow{
         choice3.setVisible(false);
         GridGame.player.party[0]=new PokemonType(5, 44, "Squirtle", false);
         try {
-            wait(3000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

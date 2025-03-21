@@ -18,6 +18,7 @@ public class GridGame {
         setupBoard();
         play();
     }
+
     private void createPlayer() {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine();
