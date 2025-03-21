@@ -30,7 +30,7 @@ public class GridGame {
 
     private void createPlayer() {
         System.out.print("Please enter your name: ");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().toUpperCase();
         player = new Player(name);
         if (name.equals("Z")) {
             player.party[0]=new PokemonType(100, 297, "Charizard", false);
@@ -154,7 +154,14 @@ public class GridGame {
                     }
                 }
             if (move.equals("WWSSADADBA")) { //funny konami code cheat code
-                System.out.println(player.party[0].getName());
+                for (int i = 0; i < 6 && player.party[i]!=null; i++) {
+                    player.party[i].setXp(25502500);
+                    player.party[i].checkLevelUp();
+                    player.party[i].setCurrentHealth(player.party[i].getHealth());
+                    board[19][0]=new Space("_");
+                    board[0][18]=player;
+                }
+                count--;
             }
             count++;
         }
