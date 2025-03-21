@@ -7,7 +7,7 @@ public class FightWindow {
     JFrame screen;
     Container con;
 
-    JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel, pokemonPanel;
+    JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel, pokemonPanel, mainTextPanel;
 
     JButton fight, run, bag, move1, move2, move3, move4, pokemon;
 
@@ -34,16 +34,28 @@ public class FightWindow {
         screen.setVisible(true);
         con = screen.getContentPane();
 
+        //panels
         actionPanel= new JPanel();
         actionPanel.setBounds(400, 400, 200, 200);
+        actionPanel.setBackground(Color.black);
         actionPanel.setVisible(true);
 
         movePanel=new JPanel();
         movePanel.setBounds(400, 400, 200, 200);
+        movePanel.setBackground(Color.black);
         movePanel.setVisible(false);
+
+        pokemonPanel=new JPanel();
+        pokemonPanel.setBounds(0, 0, 800, 600);
+        pokemonPanel.setBackground(Color.blue);
+        pokemonPanel.setVisible(false);
+
 
         //buttons section
         createButtons();
+        con.add(actionPanel);
+        con.add(movePanel);
+        con.add(pokemonPanel);
     }
 
     private class choiceHandler implements ActionListener {
@@ -142,10 +154,10 @@ public class FightWindow {
         pokemon.addActionListener(choiceHandler);
 
 
-        buttonSetter(move1, move1Name, movePanel);
+        /*buttonSetter(move1, move1Name, movePanel);
         buttonSetter(move2, move2Name, movePanel);
         buttonSetter(move3, move3Name, movePanel);
-        buttonSetter(move4, move4Name, movePanel);
+        buttonSetter(move4, move4Name, movePanel);*/
     }
 
 }

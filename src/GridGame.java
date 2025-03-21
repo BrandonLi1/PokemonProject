@@ -29,7 +29,7 @@ public class GridGame {
         } else {
             StartWindow x =  new StartWindow();
                 try {
-                    synchronized (StartWindow.window) {
+                    synchronized (StartWindow.window) { //http://scaler.com/topics/java-wait/
                         while (StartWindow.window.isVisible()) {
                             StartWindow.window.wait(10);
                         }
