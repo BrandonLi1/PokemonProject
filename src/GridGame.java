@@ -18,6 +18,7 @@ public class GridGame {
         setupBoard();
         play();
     }
+
     private void createPlayer() {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine();
@@ -75,125 +76,75 @@ public class GridGame {
     public void play() {
         setupBoard();
         playerPosition();
+        int count=0;
         while (board[0][19] != player) {
             printBoard();
-            boolean validInput = false;
-            while (!validInput) {
                 System.out.print("Enter a direction(W, A, S, D): ");
                 String move = scanner.nextLine().toUpperCase();
-
                 if (move.equals("W")) {
                     if (y != 0) {
                         checkPokemon("W");
-                        temp=board[y-1][x];
-                        board[y-1][x]=player;
-                        validInput = true;
+                        if (count>=1 && temp.getSymbol().equals("#")) {
+                            board[y][x] = new Space("#");
+                        } else {
+                            board[y][x] = new Space("_");
+                        }
+                        temp = board[y - 1][x];
+                        board[y - 1][x] = player;
                     } else {
-                        System.out.println("You will go out of bounds!");
+                        System.out.println("Out of bounds");
                     }
-                } else if (move.equals("A")) {
-                    if (y != 0) {
+                }
+                if (move.equals("A")) {
+                    if (x != 0) {
                         checkPokemon("A");
-                        temp=board[y][x-1];
-                        board[y][x-1]=player;
-                        validInput = true;
+
+                        if (count>=1 && temp.getSymbol().equals("#")) {
+                            board[y][x] = new Space("#");
+                        } else {
+                            board[y][x] = new Space("_");
+                        }
+                        temp = board[y][x - 1];
+                        board[y][x - 1] = player;
+
                     } else {
-                        System.out.println("You will go out of bounds!");
+                        System.out.println("Out of bounds");
                     }
-                } else if (move.equals("S")) {
+                }
+                if (move.equals("S")) {
                     if (y != 19) {
                         checkPokemon("S");
-                        temp=board[y+1][x];
-                        board[y+1][x]=player;
-                        validInput = true;
+
+                        if (count>=1 && temp.getSymbol().equals("#")) {
+                            board[y][x] = new Space("#");
+                        } else {
+                            board[y][x] = new Space("_");
+                        }
+                        temp = board[y + 1][x];
+                        board[y + 1][x] = player;
                     } else {
-                        System.out.println("You will go out of bounds!");
+                        System.out.println("Out of bounds");
                     }
-                } else if (move.equals("D")) {
+                }
+                if (move.equals("D")) {
                     if (x != 19) {
                         checkPokemon("D");
-                        temp=board[y][x+1];
-                        board[y][x+1]=player;
-                        validInput = true;
-                    } else {
-                        System.out.println("You will go out of bounds!");
-                    }
-                } else {
-                    System.out.println("INVALID MOVE! Try again.");
-                }
 
-                if (temp.equals("#")) {
-                    board[y][x]=new Space("#");
-                } else {
-                    board[y][x]=new Space("_");
-                }
-
-                board[0][19]=new Space("G");
-                board[19][19]=new Space("P");
-                if (move.equals("WWSSADADBA")) { //funny konami code cheat code
-                    System.out.println(player.party[0].getName());
-                }
-            }
-
-            /*
-            if (move.equals("W")) {
-                if (y != 0) {
-                    checkPokemon("W");
-                    temp=board[y-1][x];
-                    if (temp.getSymbol().equals("#")) {
-                        board[y][x] = new Space("#");
+                        if (count>=1 && temp.getSymbol().equals("#")) {
+                            board[y][x] = new Space("#");
+                        } else {
+                            board[y][x] = new Space("_");
+                        }
+                        temp = board[y][x + 1];
+                        board[y][x + 1] = player;
                     } else {
-                        board[y][x]= new Space("_");
+                        System.out.println("Out of bounds");
                     }
-                    board[y-1][x] = player;
-                } else {
-                    System.out.println("Out of bounds");
                 }
+            if (move.equals("WWSSADADBA")) { //funny konami code cheat code
+                System.out.println(player.party[0].getName());
             }
-            if (move.equals("A")) {
-                if (x != 0) {
-                    checkPokemon("A");
-                    temp=board[y][x-1];
-                    if (temp.getSymbol().equals("#")) {
-                        board[y][x] = new Space("#");
-                    } else {
-                        board[y][x]= new Space("_");
-                    }
-                    board[y][x - 1] = player;
-
-                }else {
-                    System.out.println("Out of bounds");
-                }
-            }
-            if (move.equals("S")) {
-                if (y != 19) {
-                    checkPokemon("S");
-                    temp=board[y+1][x];
-                    if (temp.getSymbol().equals("#")) {
-                        board[y][x] = new Space("#");
-                    } else {
-                        board[y][x]= new Space("_");
-                    }
-                    board[y+1][x] = player;
-                }else {
-                    System.out.println("Out of bounds");
-                }
-            }
-            if (move.equals("D")) {
-                if (x != 19) {
-                    checkPokemon("D");
-                    temp=board[y-1][x+1];
-                    if (temp.getSymbol().equals("#")) {
-                        board[y][x] = new Space("#");
-                    } else {
-                        board[y][x]= new Space("_");
-                    }
-                    board[y][x + 1] = player;
-                }else {
-                    System.out.println("Out of bounds");
-                }
-            }
-*/
+            count++;
         }
         //run the gym fight
     }

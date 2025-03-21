@@ -36,8 +36,11 @@ public class FightWindow {
 
         actionPanel= new JPanel();
         actionPanel.setBounds(400, 400, 200, 200);
+        actionPanel.setVisible(true);
 
         movePanel=new JPanel();
+        movePanel.setBounds(400, 400, 200, 200);
+        movePanel.setVisible(false);
 
         //buttons section
         createButtons();
