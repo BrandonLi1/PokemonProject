@@ -86,6 +86,7 @@ public class GridGame {
                     if (y != 0) {
                         checkPokemon("W");
                         temp=board[y-1][x];
+                        board[y-1][x]=player;
                         validInput = true;
                     } else {
                         System.out.println("You will go out of bounds!");
@@ -94,6 +95,7 @@ public class GridGame {
                     if (y != 0) {
                         checkPokemon("A");
                         temp=board[y][x-1];
+                        board[y][x-1]=player;
                         validInput = true;
                     } else {
                         System.out.println("You will go out of bounds!");
@@ -102,6 +104,7 @@ public class GridGame {
                     if (y != 19) {
                         checkPokemon("S");
                         temp=board[y+1][x];
+                        board[y+1][x]=player;
                         validInput = true;
                     } else {
                         System.out.println("You will go out of bounds!");
@@ -110,6 +113,7 @@ public class GridGame {
                     if (x != 19) {
                         checkPokemon("D");
                         temp=board[y][x+1];
+                        board[y][x+1]=player;
                         validInput = true;
                     } else {
                         System.out.println("You will go out of bounds!");
@@ -119,11 +123,16 @@ public class GridGame {
                 }
 
                 if (temp.equals("#")) {
-                    board[]
+                    board[y][x]=new Space("#");
                 } else {
-
+                    board[y][x]=new Space("_");
                 }
-                board[]
+
+                board[0][19]=new Space("G");
+                board[19][19]=new Space("P");
+                if (move.equals("WWSSADADBA")) { //funny konami code cheat code
+                    System.out.println(player.party[0].getName());
+                }
             }
 
             /*
@@ -185,9 +194,6 @@ public class GridGame {
                 }
             }
 */
-            if (move.equals("WWSSADADBA")) { //funny konami code cheat code
-                System.out.println(player.party[0].getName());
-            }
         }
         //run the gym fight
     }
@@ -227,25 +233,6 @@ public class GridGame {
         //window for fight
     }
 
-    private int playerY() {
-        for (int r = 0; r < board.length; r++) {
-            for (int c = 0; c < board[0].length; c++) {
-                if (board[r][c].equals(player)) {
-                    return r;
-                }
-            }
-        }
-    }
-
-    private int playerX() {
-        for (Space[] spaces : board) {
-            for (int c = 0; c < board[0].length; c++) {
-                if (spaces[c].equals(player)) {
-                    return c;
-                }
-            }
-        }
-    }
 
     private void playerPosition() {
         for (int i = 0; i < board.length; i++) {

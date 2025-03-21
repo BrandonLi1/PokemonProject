@@ -21,8 +21,6 @@ public class StartWindow{
     TitleScreenHandler tsHandler=new TitleScreenHandler();
     choiceHandler choiceHandler = new choiceHandler();
 
-    String position="";
-
 
     public static void main(String[] args) {
 

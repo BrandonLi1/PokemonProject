@@ -5,8 +5,9 @@ import java.awt.event.ActionListener;
 
 public class FightWindow {
     JFrame screen;
+    Container con;
 
-    JPanel fightPanel, runPanel, bagPanel, move1Panel, move2Panel, move3Panel, move4Panel, ownStatsPanel, enemyStatsPanel, pokemonPanel;
+    JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel, pokemonPanel;
 
     JButton fight, run, bag, move1, move2, move3, move4, pokemon;
 
@@ -17,13 +18,26 @@ public class FightWindow {
 
     choiceHandler choiceHandler = new choiceHandler();
 
-    String move1Name, move2Name, move3Name, move4Name,
-            pokemon1Name,pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name;//make it name the moves based on the ints
+    String move1Name, move2Name, move3Name, move4Name, pokemon1Name,
+            pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name;//make it name the moves based on the ints
 
+    public static void main(String[] args) {
+        FightWindow x = new FightWindow();
+        x.createGameScreen();
+    }
 
     public void createGameScreen() {
+        screen=new JFrame();
+        screen.setSize(800, 600);
+        screen.getContentPane().setBackground(Color.black);
+        screen.setLayout(null); //necessary to create custom layout
+        screen.setVisible(true);
+        con = screen.getContentPane();
 
+        actionPanel= new JPanel();
+        actionPanel.setBounds(400, 400, 200, 200);
 
+        movePanel=new JPanel();
 
         //buttons section
         createButtons();
@@ -93,7 +107,7 @@ public class FightWindow {
         fight.setForeground(Color.white);
         fight.setFont(buttonFont);
         fight.setFocusPainted(false);
-        fightPanel.add(fight);
+        actionPanel.add(fight);
         fight.setActionCommand("fight");
         fight.addActionListener(choiceHandler);
 
@@ -102,7 +116,7 @@ public class FightWindow {
         run.setForeground(Color.white);
         run.setFont(buttonFont);
         run.setFocusPainted(false);
-        runPanel.add(fight);
+        actionPanel.add(run);
         run.setActionCommand("run");
         run.addActionListener(choiceHandler);
 
@@ -111,7 +125,7 @@ public class FightWindow {
         bag.setForeground(Color.white);
         bag.setFont(buttonFont);
         bag.setFocusPainted(false);
-        bagPanel.add(bag);
+        actionPanel.add(bag);
         bag.setActionCommand("bag");
         bag.addActionListener(choiceHandler);
 
@@ -125,10 +139,10 @@ public class FightWindow {
         pokemon.addActionListener(choiceHandler);
 
 
-        buttonSetter(move1, move1Name, move1Panel);
-        buttonSetter(move2, move2Name, move2Panel);
-        buttonSetter(move3, move3Name, move3Panel);
-        buttonSetter(move4, move4Name, move4Panel);
+        buttonSetter(move1, move1Name, movePanel);
+        buttonSetter(move2, move2Name, movePanel);
+        buttonSetter(move3, move3Name, movePanel);
+        buttonSetter(move4, move4Name, movePanel);
     }
 
 }
