@@ -12,7 +12,7 @@ public class CreatePokemon {
 
     public CreatePokemon() {
         try {
-            File myFile = new File("Copy of indexable pokedex - Pokedex.csv");
+            File myFile = new File("src\\Copy of indexable pokedex - Pokedex.csv");
             Scanner fileScanner = new Scanner(myFile);
             fileScanner.nextLine();
             while (fileScanner.hasNext()) {

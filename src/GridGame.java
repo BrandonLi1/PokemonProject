@@ -17,11 +17,11 @@ public class GridGame {
 
     public void Start() {
         createPlayer();
-        CreatePokemon create = new CreatePokemon();
-        for(int i = 0; i < CreatePokemon.getPokemon().size() ; i ++){
-            System.out.println(CreatePokemon.getPokemon().get(i).getName());
-            System.out.println(CreatePokemon.getPokemon().get(i).getClass());
-        }
+//        CreatePokemon create = new CreatePokemon();
+//        for(int i = 0; i < CreatePokemon.getPokemon().size() ; i ++){
+//            System.out.println(CreatePokemon.getPokemon().get(i).getName());
+//            System.out.println(CreatePokemon.getPokemon().get(i).getClass());
+//        }
         setupBoard();
         play();
 
