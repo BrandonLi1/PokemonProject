@@ -22,8 +22,12 @@ public class FightWindow {
             pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name;//make it name the moves based on the ints
 
     public static void main(String[] args) {
-        FightWindow x = new FightWindow();
+        FightWindow x = new FightWindow(new Fire(1, 100, "Bulbasaur", "1", "y"));
         x.createGameScreen();
+    }
+
+    public FightWindow(PokemonType enemy) {//construct the Strings and stuff of the like
+
     }
 
     public void createGameScreen() {
@@ -181,4 +185,50 @@ public class FightWindow {
         buttonSetter(move4, move4Name, movePanel);*/
     }
 
+    private void moveSetter(PokemonType pokemon) {
+        if (pokemon.getClass()==Fire.class) {
+            int count=1;
+            for (int i = 0; i < 4; i++) {
+                if (pokemon.moveList[i]==0) {
+                   if (count == 1) {
+                       move1Name="Restore";
+                   }
+                   if (count == 2) {
+                       move2Name="Restore";
+                   }
+                   if (count == 3) {
+                       move3Name="Restore";
+                   }
+                   if (count == 4) {
+                       move4Name="Restore";
+                   }
+                }
+              if (pokemon.moveList[i]==1) {
+
+              }
+              if (pokemon.moveList[i]==2) {
+
+              }
+              if (pokemon.moveList[i]==3) {
+
+              }
+              if (pokemon.moveList[i]==4) {
+
+              }
+              if (pokemon.moveList[i]==5) {
+
+              }
+              if (pokemon.moveList[i]==6) {
+
+              }
+              count++;
+            }
+        }
+        if (pokemon.getClass()==Water.class) {
+
+        }
+        if (pokemon.getClass()==Grass.class) {
+
+        }
+    }
 }
