@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class PokemonType {
     //general code for the pokemon, add children classes of fire/water/grass
     private int accuracy;
@@ -9,21 +11,21 @@ public class PokemonType {
     private double requiredXP;
     private int currentHealth;
     private boolean burning;
-    public Integer[] moveList = new Integer[4];
+    public int[] moveList = new int[4];
+    private ArrayList<Integer> storage = new ArrayList<>();
     public PokemonType(int level, int health, String name, boolean burning) {
         this.level=level;
         this.health=health;
         this.name=name;
         burning=false;
         requiredXP = Math.pow(level, 3);
-        for (int i = 0; i < 4; i++) {
-            moveList[i]=(int)(Math.random()*7+1);
-            if (i>=1 && (moveList[i - 1].equals(moveList[i]))) {
-                if (moveList[i]!=0) {
-                    moveList[i]--;
-                } else {
-                    moveList[i]++;
-                }
+        int i =0;
+        while (moveList[3]==0) {
+            int x = (int) (Math.random() * 7 + 1);
+            if (!storage.contains(x)) {
+                moveList[i] = x;
+                storage.add(moveList[i]);
+                i++;
             }
         }
     }
@@ -101,14 +103,6 @@ public class PokemonType {
 
     public void setBurning(boolean burning) {
         this.burning = burning;
-    }
-
-    public Integer[] getMoveList() {
-        return moveList;
-    }
-
-    public void setMoveList(Integer[] moveList) {
-        this.moveList = moveList;
     }
 
     public boolean checkHit() {
