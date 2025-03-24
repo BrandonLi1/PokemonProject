@@ -203,97 +203,100 @@ public class FightWindow {
                        move4Name="Restore";
                    }
                 }
-              if (pokemon.moveList[i]==2) {
-                  if (count == 1) {
-                      move1Name="Absorb";
+                if (pokemon.moveList[i]==2) {
+                    if (count == 1) {
+                        move1Name="Flamethrower";
+                    }
+                    if (count == 2) {
+                        move2Name="Flamethrower";
+                    }
+                    if (count == 3) {
+                        move3Name="Flamethrower";
+                    }
+                    if (count == 4) {
+                        move4Name="Flamethrower";
+                    }
                   }
-                  if (count == 2) {
-                      move2Name="Absorb";
+                if (pokemon.moveList[i]==3) {
+                    if (count == 1) {
+                         move1Name="BlazingTorque";
+                    }
+                    if (count == 2) {
+                        move2Name="BlazingTorque";
+                    }
+                    if (count == 3) {
+                        move3Name="BlazingTorque";
+                    }
+                    if (count == 4) {
+                        move4Name="BlazingTorque";
+                    }
+                }
+                if (pokemon.moveList[i]==4) {
+                    if (count == 1) {
+                        move1Name="Eruption";
+                    }
+                    if (count == 2) {
+                        move2Name="Eruption";
+                    }
+                    if (count == 3) {
+                        move3Name="Eruption";
+                    }
+                    if (count == 4) {
+                        move4Name="Eruption";
+                    }
+                }
+                if (pokemon.moveList[i]==5) {
+                    if (count == 1) {
+                        move1Name="Inferno";
+                    }
+                    if (count == 2) {
+                        move2Name="Inferno";
+                    }
+                    if (count == 3) {
+                        move3Name="Inferno";
+                    }
+                    if (count == 4) {
+                        move4Name="Inferno";
+                    }
                   }
-                  if (count == 3) {
-                      move3Name="Absorb";
-                  }
-                  if (count == 4) {
-                      move4Name="Absorb";
-                  }
-              }
-              if (pokemon.moveList[i]==3) {
-                  if (count == 1) {
-                      move1Name= "Bullet Seed";
-                  }
-                  if (count == 2) {
-                      move2Name= "Bullet Seed";
-                  }
-                  if (count == 3) {
-                      move3Name= "Bullet Seed";
-                  }
-                  if (count == 4) {
-                      move4Name= "Bullet Seed";
-                  }
-              }
-              if (pokemon.moveList[i]==4) {
-                  if (count == 1) {
-                      move1Name= "Magical Leaf";
-                  }
-                  if (count == 2) {
-                      move2Name="Magical Leaf";
-                  }
-                  if (count == 3) {
-                      move3Name="Magical Leaf";
-                  }
-                  if (count == 4) {
-                      move4Name="Magical Leaf";
-                  }
-              }
-              if (pokemon.moveList[i]==5) {
-                  if (count == 1) {
-                      move1Name= "Razor Leaf";
-                  }
-                  if (count == 2) {
-                      move2Name="Razor Leaf";
-                  }
-                  if (count == 3) {
-                      move3Name="Razor Leaf";
-                  }
-                  if (count == 4) {
-                      move4Name="Razor Leaf";
-                  }
-              }
-              if (pokemon.moveList[i]==6) {
-                  if (count == 1) {
-                      move1Name= "Leaf Tornado";
-                  }
-                  if (count == 2) {
-                      move2Name="Leaf Tornado";
-                  }
-                  if (count == 3) {
-                      move3Name="Leaf Tornado";
-                  }
-                  if (count == 4) {
-                      move4Name="Leaf Tornado";
-                  }
-              }
-              if (pokemon.moveList[i]==7) {
-                  if (count == 1) {
-                      move1Name= "Solar Beam";
-                  }
-                  if (count == 2) {
-                      move2Name="Solar Beam";
-                  }
-                  if (count == 3) {
-                      move3Name="Solar Beam";
-                  }
-                  if (count == 4) {
-                      move4Name="Solar Beam";
-                  }
-              }
-              count++;
+                if (pokemon.moveList[i]==6) {
+                    if (count == 1) {
+                        move1Name="BlueFlare";
+                    }
+                    if (count == 2) {
+                        move2Name="BlueFlare";
+                    }
+                    if (count == 3) {
+                        move3Name="BlueFlare";
+                    }
+                    if (count == 4) {
+                        move4Name="BlueFlare";
+                    }
+                }
+                if (pokemon.moveList[i]==7) {
+                    if (count == 1) {
+                        move1Name="HeatWave";
+                    }
+                    if (count == 2) {
+                        move2Name="HeatWave";
+                    }
+                    if (count == 3) {
+                        move3Name="HeatWave";
+                    }
+                    if (count == 4) {
+                        move4Name="HeatWave";
+                    }
+                }
+                count++;
             }
         }
         if (pokemon.getClass()==Water.class) {
+
+        }
+        if (pokemon.getClass()==Grass.class) {
             int count=1;
             for (int i = 0; i < 4; i++) {
-                if (pokemon.moveList[i]==0) {
+                if (pokemon.moveList[i]==1) {
                     if (count == 1) {
                         move1Name="Restore";
                     }
@@ -307,29 +310,92 @@ public class FightWindow {
                         move4Name="Restore";
                     }
                 }
-                if (pokemon.moveList[i]==1) {
-
-                }
                 if (pokemon.moveList[i]==2) {
-
+                    if (count == 1) {
+                        move1Name="Absorb";
+                    }
+                    if (count == 2) {
+                        move2Name="Absorb";
+                    }
+                    if (count == 3) {
+                        move3Name="Absorb";
+                    }
+                    if (count == 4) {
+                        move4Name="Absorb";
+                    }
                 }
                 if (pokemon.moveList[i]==3) {
-
+                    if (count == 1) {
+                        move1Name= "Bullet Seed";
+                    }
+                    if (count == 2) {
+                        move2Name= "Bullet Seed";
+                    }
+                    if (count == 3) {
+                        move3Name= "Bullet Seed";
+                    }
+                    if (count == 4) {
+                        move4Name= "Bullet Seed";
+                    }
                 }
                 if (pokemon.moveList[i]==4) {
-
+                    if (count == 1) {
+                        move1Name= "Magical Leaf";
+                    }
+                    if (count == 2) {
+                        move2Name="Magical Leaf";
+                    }
+                    if (count == 3) {
+                        move3Name="Magical Leaf";
+                    }
+                    if (count == 4) {
+                        move4Name="Magical Leaf";
+                    }
                 }
                 if (pokemon.moveList[i]==5) {
-
+                    if (count == 1) {
+                        move1Name= "Razor Leaf";
+                    }
+                    if (count == 2) {
+                        move2Name="Razor Leaf";
+                    }
+                    if (count == 3) {
+                        move3Name="Razor Leaf";
+                    }
+                    if (count == 4) {
+                        move4Name="Razor Leaf";
+                    }
                 }
                 if (pokemon.moveList[i]==6) {
-
+                    if (count == 1) {
+                        move1Name= "Leaf Tornado";
+                    }
+                    if (count == 2) {
+                        move2Name="Leaf Tornado";
+                    }
+                    if (count == 3) {
+                        move3Name="Leaf Tornado";
+                    }
+                    if (count == 4) {
+                        move4Name="Leaf Tornado";
+                    }
+                }
+                if (pokemon.moveList[i]==7) {
+                    if (count == 1) {
+                        move1Name= "Solar Beam";
+                    }
+                    if (count == 2) {
+                        move2Name="Solar Beam";
+                    }
+                    if (count == 3) {
+                        move3Name="Solar Beam";
+                    }
+                    if (count == 4) {
+                        move4Name="Solar Beam";
+                    }
                 }
                 count++;
             }
-        }
-        if (pokemon.getClass()==Grass.class) {
-
         }
     }
 }
