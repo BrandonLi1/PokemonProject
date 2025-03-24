@@ -26,8 +26,8 @@ public class FightWindow {
         x.createGameScreen();
     }
 
-    public FightWindow(PokemonType enemy) {//construct the Strings and stuff of the like
-
+    public FightWindow(PokemonType a) {//construct the Strings and stuff of the like
+        moveSetter(a);
     }
 
     public void createGameScreen() {
@@ -189,7 +189,7 @@ public class FightWindow {
         if (pokemon.getClass()==Fire.class) {
             int count=1;
             for (int i = 0; i < 4; i++) {
-                if (pokemon.moveList[i]==0) {
+                if (pokemon.moveList[i]==1) {
                    if (count == 1) {
                        move1Name="Restore";
                    }
@@ -203,25 +203,91 @@ public class FightWindow {
                        move4Name="Restore";
                    }
                 }
-              if (pokemon.moveList[i]==1) {
-
-              }
-              if (pokemon.moveList[i]==2) {
-
-              }
-              if (pokemon.moveList[i]==3) {
-
-              }
-              if (pokemon.moveList[i]==4) {
-
-              }
-              if (pokemon.moveList[i]==5) {
-
-              }
-              if (pokemon.moveList[i]==6) {
-
-              }
-              count++;
+                if (pokemon.moveList[i]==2) {
+                    if (count == 1) {
+                        move1Name="Flamethrower";
+                    }
+                    if (count == 2) {
+                        move2Name="Flamethrower";
+                    }
+                    if (count == 3) {
+                        move3Name="Flamethrower";
+                    }
+                    if (count == 4) {
+                        move4Name="Flamethrower";
+                    }
+                  }
+                if (pokemon.moveList[i]==3) {
+                    if (count == 1) {
+                         move1Name="BlazingTorque";
+                    }
+                    if (count == 2) {
+                        move2Name="BlazingTorque";
+                    }
+                    if (count == 3) {
+                        move3Name="BlazingTorque";
+                    }
+                    if (count == 4) {
+                        move4Name="BlazingTorque";
+                    }
+                }
+                if (pokemon.moveList[i]==4) {
+                    if (count == 1) {
+                        move1Name="Eruption";
+                    }
+                    if (count == 2) {
+                        move2Name="Eruption";
+                    }
+                    if (count == 3) {
+                        move3Name="Eruption";
+                    }
+                    if (count == 4) {
+                        move4Name="Eruption";
+                    }
+                }
+                if (pokemon.moveList[i]==5) {
+                    if (count == 1) {
+                        move1Name="Inferno";
+                    }
+                    if (count == 2) {
+                        move2Name="Inferno";
+                    }
+                    if (count == 3) {
+                        move3Name="Inferno";
+                    }
+                    if (count == 4) {
+                        move4Name="Inferno";
+                    }
+                  }
+                if (pokemon.moveList[i]==6) {
+                    if (count == 1) {
+                        move1Name="BlueFlare";
+                    }
+                    if (count == 2) {
+                        move2Name="BlueFlare";
+                    }
+                    if (count == 3) {
+                        move3Name="BlueFlare";
+                    }
+                    if (count == 4) {
+                        move4Name="BlueFlare";
+                    }
+                }
+                if (pokemon.moveList[i]==7) {
+                    if (count == 1) {
+                        move1Name="HeatWave";
+                    }
+                    if (count == 2) {
+                        move2Name="HeatWave";
+                    }
+                    if (count == 3) {
+                        move3Name="HeatWave";
+                    }
+                    if (count == 4) {
+                        move4Name="HeatWave";
+                    }
+                }
+                count++;
             }
         }
         if (pokemon.getClass()==Water.class) {
