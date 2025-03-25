@@ -9,7 +9,8 @@ public class FightWindow {
 
     JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel, pokemonPanel, mainTextPanel;
 
-    JButton fight, run, bag, move1, move2, move3, move4, pokemon;
+    JButton fight, run, bag, move1, move2, move3, move4, pokemon, pokemon1Button,
+            pokemon2Button, pokemon3Button, pokemon4Button, pokemon5Button, pokemon6Button;
 
     Font buttonFont = new Font("Times New Roman", Font.PLAIN, 40);
     Font textFont = new Font("Tiems New Roman", Font.PLAIN, 100);
@@ -21,13 +22,45 @@ public class FightWindow {
     String move1Name, move2Name, move3Name, move4Name, pokemon1Name,
             pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name;//make it name the moves based on the ints
 
+    PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6;
+
+
     public static void main(String[] args) {
         FightWindow x = new FightWindow(new Fire(1, 100, "Bulbasaur", "1", "y"));
         x.createGameScreen();
     }
 
     public FightWindow(PokemonType enemy) {//construct the Strings and stuff of the like
-
+        int count=1;
+        for (int i = 0; i < 6; i++) {
+            if (Player.party[i]!=null) {
+                if (count==1) {
+                    pokemon1Name=Player.party[i].getName();
+                    pokemon1=Player.party[i];
+                    moveSetter(pokemon1);
+                }
+                if (count==2) {
+                    pokemon2Name=Player.party[i].getName();
+                    pokemon2=Player.party[i];
+                }
+                if (count==3) {
+                    pokemon3Name=Player.party[i].getName();
+                    pokemon3=Player.party[i];
+                }
+                if (count==4) {
+                    pokemon4Name=Player.party[i].getName();
+                    pokemon4=Player.party[i];
+                }if (count==5) {
+                    pokemon5Name=Player.party[i].getName();
+                    pokemon5=Player.party[i];
+                }
+                if (count==6) {
+                    pokemon6Name=Player.party[i].getName();
+                    pokemon6=Player.party[i];
+                }
+            }
+            count++;
+        }
     }
 
     public void createGameScreen() {
@@ -111,7 +144,7 @@ public class FightWindow {
 
     }
     public void Switch() {
-
+        //create new screen with the 6 pokemon buttons haha so fun
     }
     public void move1() {
 
