@@ -50,14 +50,7 @@ public class Water extends PokemonType{
             target.setCurrentHealth(target.getCurrentHealth()-damage);
         }
     }
-    public void Jetpunch(PokemonType self, PokemonType target) {
-        setAccuracy(65);
-        if (checkHit()) {
-            setPower(75);
-            int damage = (int) (checkDamage() * checkEffective(target));
-            target.setCurrentHealth(target.getCurrentHealth() - damage);
-        }
-    }
+
     private double checkEffective(PokemonType target){
         if(target instanceof Fire){
             return 2;

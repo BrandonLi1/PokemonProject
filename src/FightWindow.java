@@ -473,16 +473,16 @@ public class FightWindow {
                 }
                 if (pokemon.moveList[i] == 7) {
                     if (count == 1) {
-                        move1Name = "Jetpunch";
+                        move1Name = "Restore";
                     }
                     if (count == 2) {
-                        move2Name = "Jetpunch";
+                        move2Name = "Restore";
                     }
                     if (count == 3) {
-                        move3Name = "Jetpunch";
+                        move3Name = "Restore";
                     }
                     if (count == 4) {
-                        move4Name = "Jetpunch";
+                        move4Name = "Restore";
                     }
                 }
                 count++;
