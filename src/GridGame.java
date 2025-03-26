@@ -170,7 +170,6 @@ public class GridGame {
     }
     private void checkPokemon(String move) {
         playerPosition();
-        int x= (int)(Math.random()*10);
         if (move.equals("W")) {
             if (board[y-1][x].getSymbol().equals("#")) {
                grassCheck();

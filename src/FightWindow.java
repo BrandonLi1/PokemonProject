@@ -7,7 +7,8 @@ public class FightWindow {
     JFrame screen;
     Container con;
 
-    JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel, pokemonPanel, mainTextPanel;
+    JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel, pokemonPanel,
+            mainTextPanel, switchPanel;
 
     JButton fight, run, bag, move1, move2, move3, move4, pokemon, pokemon1Button,
             pokemon2Button, pokemon3Button, pokemon4Button, pokemon5Button, pokemon6Button;
@@ -63,6 +64,22 @@ public class FightWindow {
         }
     }
 
+
+    public void switchScreen() {
+        switchPanel = new JPanel();
+        switchPanel.setBounds(0, 0, 400, 800);
+        switchPanel.setBackground(Color.blue);
+        switchPanel.setLayout(new GridLayout(3, 2));
+        switchPanel.setVisible(true);
+
+        buttonSetter(pokemon1Button, pokemon1Name, switchPanel);
+        buttonSetter(pokemon2Button, pokemon2Name, switchPanel);
+        buttonSetter(pokemon3Button, pokemon3Name, switchPanel);
+        buttonSetter(pokemon4Button, pokemon4Name, switchPanel);
+        buttonSetter(pokemon5Button, pokemon5Name, switchPanel);
+        buttonSetter(pokemon6Button, pokemon6Name, switchPanel);
+    }
+
     public void createGameScreen() {
         screen=new JFrame();
         screen.setSize(1500, 1300);
@@ -105,11 +122,19 @@ public class FightWindow {
         mainTextArea.setLineWrap(true);
         mainTextPanel.add(mainTextArea);
 
+        //layover or replace action panel
+        movePanel= new JPanel();
+        movePanel.setBounds(600, 700, 900, 300);
+        movePanel.setBackground(Color.black);
+        movePanel.setLayout(new GridLayout(2, 2));
+        movePanel.setVisible(false);
+
         //buttons section
         createButtons();
         con.add(actionPanel);
         con.add(movePanel);
         con.add(pokemonPanel);
+        con.add(movePanel);
     }
 
     private class choiceHandler implements ActionListener {
@@ -131,6 +156,23 @@ public class FightWindow {
                 move3();
             } else if (e.equals("move4")) {
                 move4();
+            } else if (e.equals(pokemon1Name.toLowerCase())) {
+                pokemon1Switch();
+            }
+            else if (e.equals(pokemon2Name.toLowerCase())) {
+                pokemon2Switch();
+            }
+            else if (e.equals(pokemon3Name.toLowerCase())) {
+                pokemon3Switch();
+            }
+            else if (e.equals(pokemon4Name.toLowerCase())) {
+                pokemon4Switch();
+            }
+            else if (e.equals(pokemon5Name.toLowerCase())) {
+                pokemon5Switch();
+            }
+            else if (e.equals(pokemon6Name.toLowerCase())) {
+                pokemon6Switch();
             }
         }
     }
@@ -141,10 +183,11 @@ public class FightWindow {
 
     }
     public void fight() {
-
+        actionPanel.setVisible(false);
+        movePanel.setVisible(true);
     }
     public void Switch() {
-        //create new screen with the 6 pokemon buttons haha so fun
+        switchScreen();
     }
     public void move1() {
 
@@ -156,6 +199,24 @@ public class FightWindow {
 
     }
     public void move4() {
+
+    }
+    public void pokemon1Switch() {
+
+    }
+    public void pokemon2Switch() {
+
+    }
+    public void pokemon3Switch() {
+
+    }
+    public void pokemon4Switch() {
+
+    }
+    public void pokemon5Switch() {
+
+    }
+    public void pokemon6Switch() {
 
     }
 
@@ -212,10 +273,10 @@ public class FightWindow {
         pokemon.addActionListener(choiceHandler);
 
 
-        /*buttonSetter(move1, move1Name, movePanel);
+        buttonSetter(move1, move1Name, movePanel);
         buttonSetter(move2, move2Name, movePanel);
         buttonSetter(move3, move3Name, movePanel);
-        buttonSetter(move4, move4Name, movePanel);*/
+        buttonSetter(move4, move4Name, movePanel);
     }
 
     private void moveSetter(PokemonType pokemon) {
