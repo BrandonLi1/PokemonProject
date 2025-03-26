@@ -324,10 +324,111 @@ public class FightWindow {
             }
         }
         if (pokemon.getClass()==Water.class) {
-
+            int count = 1;
+            for (int i = 0; i < 4; i++) {
+                if (pokemon.moveList[i] == 1) {
+                    if (count == 1) {
+                        move1Name = "Aquajet";
+                    }
+                    if (count == 2) {
+                        move2Name = "Aquajet";
+                    }
+                    if (count == 3) {
+                        move3Name = "Aquajet";
+                    }
+                    if (count == 4) {
+                        move4Name = "Aquajet";
+                    }
+                }
+                if (pokemon.moveList[i] == 2) {
+                    if (count == 1) {
+                        move1Name = "Aquaring";
+                    }
+                    if (count == 2) {
+                        move2Name = "Aquaring";
+                    }
+                    if (count == 3) {
+                        move3Name = "Aquaring";
+                    }
+                    if (count == 4) {
+                        move4Name = "Aquaring";
+                    }
+                }
+                if (pokemon.moveList[i] == 3) {
+                    if (count == 1) {
+                        move1Name = "Bubble";
+                    }
+                    if (count == 2) {
+                        move2Name = "Bubble";
+                    }
+                    if (count == 3) {
+                        move3Name = "Bubble";
+                    }
+                    if (count == 4) {
+                        move4Name = "Bubble";
+                    }
+                }
+                if (pokemon.moveList[i] == 4) {
+                    if (count == 1) {
+                        move1Name = "Hydropump";
+                    }
+                    if (count == 2) {
+                        move2Name = "Hydropump";
+                    }
+                    if (count == 3) {
+                        move3Name = "Hydropump";
+                    }
+                    if (count == 4) {
+                        move4Name = "Hydropump";
+                    }
+                }
+                if (pokemon.moveList[i] == 5) {
+                    if (count == 1) {
+                        move1Name = "Bubblebeam";
+                    }
+                    if (count == 2) {
+                        move2Name = "Bubblebeam";
+                    }
+                    if (count == 3) {
+                        move3Name = "Bubblebeam";
+                    }
+                    if (count == 4) {
+                        move4Name = "Bubblebeam";
+                    }
+                }
+                if (pokemon.moveList[i] == 6) {
+                    if (count == 1) {
+                        move1Name = "Razorshell";
+                    }
+                    if (count == 2) {
+                        move2Name = "Razorshell";
+                    }
+                    if (count == 3) {
+                        move3Name = "Razorshell";
+                    }
+                    if (count == 4) {
+                        move4Name = "Razorshell";
+                    }
+                }
+                if (pokemon.moveList[i] == 7) {
+                    if (count == 1) {
+                        move1Name = "Jetpunch";
+                    }
+                    if (count == 2) {
+                        move2Name = "Jetpunch";
+                    }
+                    if (count == 3) {
+                        move3Name = "Jetpunch";
+                    }
+                    if (count == 4) {
+                        move4Name = "Jetpunch";
+                    }
+                }
+                count++;
+            }
         }
         if (pokemon.getClass()==Grass.class) {
-            int count=1;
+            int count = 1;
             for (int i = 0; i < 4; i++) {
                 if (pokemon.moveList[i]==1) {
                     if (count == 1) {
