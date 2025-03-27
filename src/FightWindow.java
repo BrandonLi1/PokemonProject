@@ -14,7 +14,8 @@ public class FightWindow {
             pokemon2Button, pokemon3Button, pokemon4Button, pokemon5Button, pokemon6Button;
 
     Font buttonFont = new Font("Times New Roman", Font.PLAIN, 40);
-    Font textFont = new Font("Tiems New Roman", Font.PLAIN, 100);
+    Font textFont = new Font("Times New Roman", Font.PLAIN, 100);
+    Font statFont = new Font("Times New Roman", Font.PLAIN, 20);
 
     JTextArea mainTextArea, ownStats, enemyStats;
 
@@ -63,6 +64,7 @@ public class FightWindow {
             }
             count++;
         }
+        moveSetter(pokemon1);
     }
 
 
@@ -72,12 +74,18 @@ public class FightWindow {
         switchPanel.setBackground(Color.blue);
         switchPanel.setLayout(new GridLayout(3, 2));
         switchPanel.setVisible(true);
-
-        buttonSetter(pokemon1Button, pokemon1Name, switchPanel);
+        if (pokemon1!=null) {
+            buttonSetter(pokemon1Button, pokemon1Name, switchPanel);
+        }
+        if (pokemon2!=null)
         buttonSetter(pokemon2Button, pokemon2Name, switchPanel);
+        if (pokemon3!=null)
         buttonSetter(pokemon3Button, pokemon3Name, switchPanel);
+        if (pokemon4!=null)
         buttonSetter(pokemon4Button, pokemon4Name, switchPanel);
+        if (pokemon5!=null)
         buttonSetter(pokemon5Button, pokemon5Name, switchPanel);
+        if (pokemon6!=null)
         buttonSetter(pokemon6Button, pokemon6Name, switchPanel);
     }
 
@@ -111,7 +119,15 @@ public class FightWindow {
         mainTextPanel.setBackground(Color.white);
         con.add(mainTextPanel);
 
+        ownStatsPanel = new JPanel();
+        ownStatsPanel.setBounds(0, 300, 200, 100);
+        ownStatsPanel.setBackground(Color.white);
+        con.add(ownStatsPanel);
 
+        enemyStatsPanel=new JPanel();
+        enemyStatsPanel.setBounds(1000, 0, 200, 100);
+        enemyStatsPanel.setBackground(Color.white);
+        con.add(enemyStatsPanel);
 
         //textAreas
         mainTextArea=new JTextArea();
@@ -124,14 +140,24 @@ public class FightWindow {
         mainTextPanel.add(mainTextArea);
 
         ownStats = new JTextArea();
-        ownStats.setText(pokemon1Name + "\n" +
+        ownStats.setText(pokemon1Name + "     Level " + pokemon1.getLevel() + "\n\n Health: " +
                 pokemon1.getCurrentHealth() + "/" + pokemon1.getHealth());
-        ownStats.setBounds();
+        ownStats.setBounds(0, 300, 200, 100);
+        ownStats.setBackground(Color.white);
+        ownStats.setForeground(Color.black);
+        ownStats.setFont(statFont);
+        ownStats.setLineWrap(true);
+        ownStatsPanel.add(ownStats);
 
         enemyStats= new JTextArea();
-        enemyStats.setText(enemy.getName() + "\n" +
+        enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
-        enemyStats.setBounds();
+        enemyStats.setBounds(1000, 0, 200, 100);
+        enemyStats.setBackground(Color.white);
+        enemyStats.setForeground(Color.black);
+        enemyStats.setFont(statFont);
+        enemyStats.setLineWrap(true);
+        enemyStatsPanel.add(enemyStats);
 
         //layover or replace action panel
         movePanel= new JPanel();
@@ -200,6 +226,7 @@ public class FightWindow {
     public void Switch() {
         switchScreen();
     }
+
     public void move1() {
 
     }
@@ -253,6 +280,16 @@ public class FightWindow {
         button.setActionCommand(name.toLowerCase());
         button.addActionListener(choiceHandler);
     }
+    private void movesButtonSetter(JButton button, String name, String inputName, JPanel buttonPanel) {
+        button=new JButton(name);
+        button.setBackground(Color.black);
+        button.setForeground(Color.white);
+        button.setFont(buttonFont);
+        button.setFocusPainted(false);
+        buttonPanel.add(button);
+        button.setActionCommand(inputName.toLowerCase());
+        button.addActionListener(choiceHandler);
+    }
 
     private void createButtons() {
         fight=new JButton("Fight");
@@ -295,11 +332,11 @@ public class FightWindow {
         pokemon.setActionCommand("pokemon");
         pokemon.addActionListener(choiceHandler);
 
-
-        buttonSetter(move1, move1Name, movePanel);
-        buttonSetter(move2, move2Name, movePanel);
-        buttonSetter(move3, move3Name, movePanel);
-        buttonSetter(move4, move4Name, movePanel);
+        moveSetter(pokemon1);
+        movesButtonSetter(move1, move1Name,"move1", movePanel);
+        movesButtonSetter(move2, move2Name,"move2",  movePanel);
+        movesButtonSetter(move3, move3Name,"move3", movePanel);
+        movesButtonSetter(move4, move4Name,"move4", movePanel);
     }
 
     private void moveSetter(PokemonType pokemon) {
