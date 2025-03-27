@@ -213,22 +213,34 @@ public class FightWindow {
 
     }
     public void pokemon1Switch() {
-
+        moveSetter(pokemon1);
+        ownStats.setText(pokemon1Name +"     Level" + pokemon1.getLevel() + "\n\n Health: " +
+                pokemon1.getCurrentHealth() + "/" + pokemon1.getHealth());
     }
     public void pokemon2Switch() {
-
+        moveSetter(pokemon2);
+        ownStats.setText(pokemon2Name + "     Level" + pokemon2.getLevel() +"\n\n Health: " +
+                pokemon2.getCurrentHealth() + "/" + pokemon2.getHealth());
     }
     public void pokemon3Switch() {
-
+        moveSetter(pokemon3);
+        ownStats.setText(pokemon3Name + "     Level" + pokemon3.getLevel() +"\n\n Health: " +
+                pokemon3.getCurrentHealth() + "/" + pokemon3.getHealth());
     }
     public void pokemon4Switch() {
-
+        moveSetter(pokemon4);
+        ownStats.setText(pokemon4Name + "     Level" + pokemon4.getLevel() +"\n\n Health: " +
+                pokemon4.getCurrentHealth() + "/" + pokemon4.getHealth());
     }
     public void pokemon5Switch() {
-
+        moveSetter(pokemon5);
+        ownStats.setText(pokemon5Name + "     Level" + pokemon5.getLevel() +"\n\n Health: " +
+                pokemon5.getCurrentHealth() + "/" + pokemon5.getHealth());
     }
     public void pokemon6Switch() {
-
+        moveSetter(pokemon6);
+        ownStats.setText(pokemon6Name + "     Level" + pokemon6.getLevel() +"\n\n Health: " +
+                pokemon6.getCurrentHealth() + "/" + pokemon6.getHealth());
     }
 
     private void buttonSetter(JButton button, String name, JPanel buttonPanel) {
