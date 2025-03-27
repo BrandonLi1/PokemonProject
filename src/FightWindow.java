@@ -23,7 +23,7 @@ public class FightWindow {
     String move1Name, move2Name, move3Name, move4Name, pokemon1Name,
             pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name;//make it name the moves based on the ints
 
-    PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6;
+    PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, enemy;
 
 
     public static void main(String[] args) {
@@ -32,6 +32,7 @@ public class FightWindow {
     }
 
     public FightWindow(PokemonType enemy) {//construct the Strings and stuff of the like
+        this.enemy=enemy;
         int count=1;
         for (int i = 0; i < 6; i++) {
             if (Player.party[i]!=null) {
@@ -121,6 +122,16 @@ public class FightWindow {
         mainTextArea.setFont(textFont);
         mainTextArea.setLineWrap(true);
         mainTextPanel.add(mainTextArea);
+
+        ownStats = new JTextArea();
+        ownStats.setText(pokemon1Name + "\n" +
+                pokemon1.getCurrentHealth() + "/" + pokemon1.getHealth());
+        ownStats.setBounds();
+
+        enemyStats= new JTextArea();
+        enemyStats.setText(enemy.getName() + "\n" +
+                enemy.getCurrentHealth() + "/" + enemy.getHealth());
+        enemyStats.setBounds();
 
         //layover or replace action panel
         movePanel= new JPanel();
