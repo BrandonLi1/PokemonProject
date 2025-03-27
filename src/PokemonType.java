@@ -28,6 +28,7 @@ public class PokemonType {
                 i++;
             }
         }
+        this.currentHealth=this.health;
     }
 
     public int getLevel() {
