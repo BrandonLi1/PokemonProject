@@ -118,7 +118,6 @@ public class GridGame {
                         }
                         temp = board[y][x - 1];
                         board[y][x - 1] = player;
-
                     } else {
                         System.out.println("Out of bounds");
                     }
