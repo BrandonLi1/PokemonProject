@@ -4,7 +4,7 @@ public class Water extends PokemonType{
     }
 
 
-    public void Aquajet(PokemonType self, PokemonType target){
+    public void Aquajet( PokemonType target){
         setAccuracy(100);
         if (checkHit()) {
             setPower(40);
@@ -12,13 +12,13 @@ public class Water extends PokemonType{
             target.setCurrentHealth(target.getCurrentHealth()-damage);//returns number for damage
         }
     }
-    public void Aquaring(PokemonType self, PokemonType target){
+    public void Aquaring(PokemonType target){
         setAccuracy(100);
         if (checkHit()) {
             setHealth(getHealth() + 10);
         }
     }
-    public void Bubble(PokemonType self, PokemonType target){
+    public void Bubble(PokemonType target){
         setAccuracy(100);
         if(checkHit()){
             setPower(40);
@@ -27,7 +27,7 @@ public class Water extends PokemonType{
 
         }
     }
-    public void Hydropump(PokemonType self, PokemonType target){
+    public void Hydropump( PokemonType target){
         setAccuracy(80);
         if(checkHit()){
             setPower(110);
@@ -35,14 +35,14 @@ public class Water extends PokemonType{
             target.setCurrentHealth(target.getCurrentHealth()-damage);
         }
     }
-    public void Bubblebeam(PokemonType self, PokemonType target){
+    public void Bubblebeam(PokemonType target){
         setAccuracy(100);
         if(checkHit()){
             int damage=(int)(checkDamage()*checkEffective(target));
             target.setCurrentHealth(target.getCurrentHealth()-damage);setPower(65);
         }
     }
-    public void Razorshell(PokemonType self, PokemonType target){
+    public void Razorshell(PokemonType target){
         setAccuracy(95);
         if(checkHit()){
             setPower(95);

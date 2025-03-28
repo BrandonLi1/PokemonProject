@@ -3,7 +3,7 @@ public class Grass extends PokemonType{
         super(level, health, name);
     }
 
-    public void absorb(PokemonType self, PokemonType target) {
+    public void absorb( PokemonType target) {
         setAccuracy(100);
         if (checkHit()) {
             setPower(20);
@@ -12,7 +12,7 @@ public class Grass extends PokemonType{
         }
     }
 
-    public void bulletSeed(PokemonType self, PokemonType target) {
+    public void bulletSeed( PokemonType target) {
         int totalDmg = 0;
         int shots = (int) (Math.random() * 4 + 2);
         setAccuracy(25);
@@ -26,7 +26,7 @@ public class Grass extends PokemonType{
         target.setCurrentHealth(target.getCurrentHealth()-totalDmg);
     }
 
-    public void magicalLeaf(PokemonType self, PokemonType target) {
+    public void magicalLeaf( PokemonType target) {
         setAccuracy(100);
         if (checkHit()) {
             setPower(60);
@@ -35,7 +35,7 @@ public class Grass extends PokemonType{
         }
     }
 
-    public void razorLeaf(PokemonType self, PokemonType target) {
+    public void razorLeaf( PokemonType target) {
         setAccuracy(95);
         if (checkHit()) {
             setPower(55);
@@ -44,7 +44,7 @@ public class Grass extends PokemonType{
         }
     }
 
-    public void leafTornado(PokemonType self, PokemonType target) {
+    public void leafTornado( PokemonType target) {
         setAccuracy(90);
         if (checkHit()) {
             setPower(65);
@@ -53,7 +53,7 @@ public class Grass extends PokemonType{
         }
     }
 
-    public void solarBeam(PokemonType self, PokemonType target) {
+    public void solarBeam( PokemonType target) {
         setAccuracy(100);
         if (checkHit()) {
             setPower(60);

@@ -233,7 +233,9 @@ public class FightWindow {
     public void move1() {
         String x= move1Name;
         if (activePokemon.getClass()==Fire.class) {
-            if (x.equals())
+            if (x.equals("Flamethrower")) {
+                ((Fire) activePokemon).Flamethrower(enemy);
+            }
         }
         if (activePokemon.getClass()==Water.class) {
 

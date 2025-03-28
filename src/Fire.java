@@ -14,7 +14,7 @@ public class Fire extends PokemonType{
 
     //moves as methods
 
-    public void Flamethrower(PokemonType self, PokemonType target) {
+    public void Flamethrower(PokemonType target) {
         setAccuracy(100);
         if (checkHit()) {
             setPower(90);
@@ -26,7 +26,7 @@ public class Fire extends PokemonType{
         }
     }
 
-    public void BlazingTorque (PokemonType self, PokemonType target) {
+    public void BlazingTorque (PokemonType target) {
         setAccuracy(100);
         if (checkHit()) {
             setPower(80);
@@ -38,7 +38,7 @@ public class Fire extends PokemonType{
         }
     }
 
-    public void Eruption(PokemonType self, PokemonType target) {
+    public void Eruption(PokemonType target) {
         setAccuracy(100);
         if (checkHit()) {
             setPower(150);
@@ -47,7 +47,7 @@ public class Fire extends PokemonType{
         }
     }
 
-    public void Inferno(PokemonType self, PokemonType target) {
+    public void Inferno( PokemonType target) {
         setAccuracy(50);
         if (checkHit()) {
             setPower(100);
@@ -59,7 +59,7 @@ public class Fire extends PokemonType{
         }
     }
 
-    public void BlueFlare(PokemonType self, PokemonType target) {
+    public void BlueFlare( PokemonType target) {
         setAccuracy(85);
         if (checkHit()) {
             setPower(130);
@@ -71,7 +71,7 @@ public class Fire extends PokemonType{
         }
     }
 
-    public void HeatWave(PokemonType self, PokemonType target) {
+    public void HeatWave( PokemonType target) {
         setAccuracy(90);
         if (checkHit()) {
             setPower(95);
