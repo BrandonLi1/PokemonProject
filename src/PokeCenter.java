@@ -30,9 +30,9 @@ public class PokeCenter extends Space{
             response2 = scanner.nextInt();
             if(response2 == 1){
                 // add potion item to the inventory
-                Player.addItemBad(new Potions(0,1,25));
+                Player.addItemBag(new Potions(0,1,25));
             } else if(response2 == 2){
-                Player.addItemBad(new Pokeballs(0,1,25));
+                Player.addItemBag(new Pokeballs(0,1,25));
                 // add pokeball to the inventory
             } else {
                 System.out.println("invalid entry");

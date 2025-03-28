@@ -4,8 +4,8 @@ public class Pokeballs extends Items{
         super(price, amount);
         this.successrate = successrate;
     }
-    @Override
-    public void getItemName(){
-        System.out.print("Pokeball");
-    }
+@Override
+public String getItemName(){
+    return("Pokeball");
+}
 }

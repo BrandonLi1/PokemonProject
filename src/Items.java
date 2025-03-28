@@ -17,7 +17,7 @@ public class Items {
     public void setAmount(int amt2){
         amount = amt2;
     }
-    public void getItemName(){
-        System.out.println("Item");
+    public String getItemName(){
+        return("Item");
     }
 }

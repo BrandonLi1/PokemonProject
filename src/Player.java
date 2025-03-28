@@ -22,8 +22,17 @@ public class Player extends Space {
             System.out.print(", ");
         }
     }
-    public static void addItemBad(Items item ){
+    public static void addItemBag(Items item ){
         itembag.add(item);
+    }
+    public static int pokeballamt(){
+        int amunt = 0;
+        for (int i = 0; i < itembag.size(); i++) {
+            if(itembag.get(i).getItemName().equals("Pokeball")){
+                amunt++;
+            }
+        }
+        return amunt;
     }
 
 
