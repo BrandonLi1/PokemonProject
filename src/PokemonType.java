@@ -13,7 +13,7 @@ public class PokemonType {
     private boolean burning;
     public int[] moveList = new int[4];
     private ArrayList<Integer> storage = new ArrayList<>();
-    public PokemonType(int level, int health, String name, boolean burning) {
+    public PokemonType(int level, int health, String name) {
         this.level=level;
         this.health=health;
         this.name=name;

@@ -5,7 +5,7 @@ public class Fire extends PokemonType{
     int move4;
 
     public Fire(int level, int health, String name,String stage, String evolve) {
-        super(level, health, name, false);
+        super(level, health, name);
         move1=moveList[0];
         move2=moveList[1];
         move3=moveList[2];

@@ -129,7 +129,7 @@ public class StartWindow{
         choice1.setVisible(false);
         choice2.setVisible(false);
         choice3.setVisible(false);
-        GridGame.player.party[0]=new PokemonType(5, 39, "Charmander", false);
+        GridGame.player.party[0]=new Fire(5, 39, "Charmander", "1","y");
         window.dispose();
     }
     public void bulbasaur() {
@@ -137,7 +137,7 @@ public class StartWindow{
         choice1.setVisible(false);
         choice2.setVisible(false);
         choice3.setVisible(false);
-        GridGame.player.party[0]=new PokemonType(5, 45, "Bulbasaur", false);
+        GridGame.player.party[0]=new Grass(5, 45, "Bulbasaur", "1","y");
         window.dispose();
     }
     public void squirtle() {
@@ -145,7 +145,7 @@ public class StartWindow{
         choice1.setVisible(false);
         choice2.setVisible(false);
         choice3.setVisible(false);
-        GridGame.player.party[0] = new PokemonType(5, 44, "Squirtle", false);
+        GridGame.player.party[0] = new Water(5, 44, "Squirtle", "1","y");
         window.dispose();
     }
 

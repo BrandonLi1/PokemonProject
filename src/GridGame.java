@@ -33,9 +33,9 @@ public class GridGame {
         String name = scanner.nextLine().toUpperCase();
         player = new Player(name);
         if (name.equals("Z")) {
-            player.party[0]=new PokemonType(100, 297, "Charizard", false);
-            player.party[1]=new PokemonType(100, 299, "Blastoise", false);
-            player.party[2]=new PokemonType(100, 301, "Venusaur", false);
+            player.party[0]=new Fire(100, 297, "Charizard", "3", "n");
+            player.party[1]=new Water(100, 299, "Blastoise", "3", "n");
+            player.party[2]=new Grass(100, 301, "Venusaur", "3", "n");
         } else {
             StartWindow x =  new StartWindow();
                 try {

@@ -24,11 +24,13 @@ public class FightWindow {
     String move1Name, move2Name, move3Name, move4Name, pokemon1Name,
             pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name;//make it name the moves based on the ints
 
-    PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, enemy;
+    static PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, enemy, activePokemon;
 
 
     public static void main(String[] args) {
-        FightWindow x = new FightWindow(new Fire(1, 100, "Bulbasaur", "1", "y"));
+        enemy= new Fire(1, 100, "Bulbasaur", "1", "y");
+        activePokemon=pokemon1;
+        FightWindow x = new FightWindow(enemy);
         x.createGameScreen();
     }
 
@@ -103,11 +105,6 @@ public class FightWindow {
         actionPanel.setBackground(Color.black);
         actionPanel.setLayout(new GridLayout(2, 2));
         actionPanel.setVisible(true);
-
-        movePanel=new JPanel();
-        movePanel.setBounds(400, 400, 200, 200);
-        movePanel.setBackground(Color.black);
-        movePanel.setVisible(false);
 
         pokemonPanel=new JPanel();
         pokemonPanel.setBounds(0, 0, 800, 600);
@@ -195,21 +192,27 @@ public class FightWindow {
                 move4();
             } else if (e.equals(pokemon1Name.toLowerCase())) {
                 pokemon1Switch();
+                activePokemon=pokemon1;
             }
             else if (e.equals(pokemon2Name.toLowerCase())) {
                 pokemon2Switch();
+                activePokemon=pokemon2;
             }
             else if (e.equals(pokemon3Name.toLowerCase())) {
                 pokemon3Switch();
+                activePokemon=pokemon3;
             }
             else if (e.equals(pokemon4Name.toLowerCase())) {
                 pokemon4Switch();
+                activePokemon=pokemon4;
             }
             else if (e.equals(pokemon5Name.toLowerCase())) {
                 pokemon5Switch();
+                activePokemon=pokemon5;
             }
             else if (e.equals(pokemon6Name.toLowerCase())) {
                 pokemon6Switch();
+                activePokemon=pokemon6;
             }
         }
     }
@@ -228,7 +231,16 @@ public class FightWindow {
     }
 
     public void move1() {
+        String x= move1Name;
+        if (activePokemon.getClass()==Fire.class) {
+            if (x.equals())
+        }
+        if (activePokemon.getClass()==Water.class) {
 
+        }
+        if (activePokemon.getClass()==Grass.class) {
+
+        }
     }
     public void move2() {
 
@@ -445,6 +457,7 @@ public class FightWindow {
             }
         }
         if (pokemon.getClass()==Water.class) {
+            System.out.println("water");
             int count = 1;
             for (int i = 0; i < 4; i++) {
                 if (pokemon.moveList[i] == 1) {
@@ -549,6 +562,7 @@ public class FightWindow {
             }
         }
         if (pokemon.getClass()==Grass.class) {
+            System.out.println("grass");
             int count = 1;
             for (int i = 0; i < 4; i++) {
                 if (pokemon.moveList[i]==1) {

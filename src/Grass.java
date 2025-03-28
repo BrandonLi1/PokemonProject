@@ -1,6 +1,6 @@
 public class Grass extends PokemonType{
     public Grass(int level, int health, String name,String stage, String evolve) {
-        super(level, health, name, false);
+        super(level, health, name);
     }
 
     public void absorb(PokemonType self, PokemonType target) {
