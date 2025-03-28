@@ -14,7 +14,7 @@ public class FightWindow {
             pokemon2Button, pokemon3Button, pokemon4Button, pokemon5Button, pokemon6Button;
 
     Font buttonFont = new Font("Times New Roman", Font.PLAIN, 40);
-    Font textFont = new Font("Times New Roman", Font.PLAIN, 100);
+    Font textFont = new Font("Times New Roman", Font.PLAIN, 30);
     Font statFont = new Font("Times New Roman", Font.PLAIN, 20);
 
     JTextArea mainTextArea, ownStats, enemyStats;
@@ -29,7 +29,6 @@ public class FightWindow {
 
     public static void main(String[] args) {
         enemy= new Fire(1, 100, "Bulbasaur", "1", "y");
-        activePokemon=pokemon1;
         FightWindow x = new FightWindow(enemy);
         x.createGameScreen();
     }
@@ -66,6 +65,7 @@ public class FightWindow {
             }
             count++;
         }
+        activePokemon=pokemon1;
         moveSetter(pokemon1);
     }
 
@@ -232,9 +232,28 @@ public class FightWindow {
 
     public void move1() {
         String x= move1Name;
+        mainTextArea.setText(activePokemon.getName() + " used "  + x);
+        if (x.equals("Restore")) {
+            activePokemon.Restore(activePokemon);
+        }
         if (activePokemon.getClass()==Fire.class) {
             if (x.equals("Flamethrower")) {
                 ((Fire) activePokemon).Flamethrower(enemy);
+            }
+            if (x.equals("BlazingTorque")) {
+                ((Fire) activePokemon).BlazingTorque(enemy);
+            }
+            if (x.equals("Eruption")) {
+                ((Fire)activePokemon).Eruption(enemy);
+            }
+            if (x.equals("Inferno")) {
+                ((Fire)activePokemon).Inferno(enemy);
+            }
+            if (x.equals("BlueFlare")) {
+                ((Fire)activePokemon).BlueFlare(enemy);
+            }
+            if (x.equals("HeatWave")) {
+                ((Fire)activePokemon).HeatWave(enemy);
             }
         }
         if (activePokemon.getClass()==Water.class) {
@@ -243,6 +262,8 @@ public class FightWindow {
         if (activePokemon.getClass()==Grass.class) {
 
         }
+        enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
+                enemy.getCurrentHealth() + "/" + enemy.getHealth());
     }
     public void move2() {
 

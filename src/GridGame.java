@@ -193,7 +193,7 @@ public class GridGame {
     }
 
     public void grassCheck() {
-        int x=(int)(Math.random()*10);
+        int x=(int)(Math.random());
         if (x==0) {
             encounter();
         }
