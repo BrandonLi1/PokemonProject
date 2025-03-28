@@ -32,7 +32,7 @@ public class GridGame {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine().toUpperCase();
         player = new Player(name);
-        if (name.equals("Z")) {
+        if (name.equals("DRAGON")) {
             player.party[0]=new Fire(100, 297, "Charizard", "3", "n");
             player.party[1]=new Water(100, 299, "Blastoise", "3", "n");
             player.party[2]=new Grass(100, 301, "Venusaur", "3", "n");

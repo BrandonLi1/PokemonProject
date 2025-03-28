@@ -184,6 +184,9 @@ public class FightWindow {
                 fight();
             } else if (e.equals("move1")) {
                 move1();
+                if (enemy.getCurrentHealth()<=0) {
+                    //win con or smth
+                }
             } else if (e.equals("move2")) {
                 move2();
             } else if (e.equals("move3")) {
@@ -295,6 +298,8 @@ public class FightWindow {
         }
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+        movePanel.setVisible(false);
+        actionPanel.setVisible(true);
     }
     public void move2() {
         String x= move2Name;
@@ -361,9 +366,11 @@ public class FightWindow {
         }
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+        movePanel.setVisible(false);
+        actionPanel.setVisible(true);
     }
     public void move3() {
-        String x= move2Name;
+        String x= move3Name;
         mainTextArea.setText(activePokemon.getName() + " used "  + x);
         if (x.equals("Restore")) {
             activePokemon.Restore(activePokemon);
@@ -427,9 +434,11 @@ public class FightWindow {
         }
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+        movePanel.setVisible(false);
+        actionPanel.setVisible(true);
     }
     public void move4() {
-        String x= move2Name;
+        String x= move4Name;
         mainTextArea.setText(activePokemon.getName() + " used "  + x);
         if (x.equals("Restore")) {
             activePokemon.Restore(activePokemon);
@@ -493,6 +502,8 @@ public class FightWindow {
         }
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+        movePanel.setVisible(false);
+        actionPanel.setVisible(true);
     }
     public void pokemon1Switch() {
         moveSetter(pokemon1);
