@@ -10,8 +10,8 @@ public class Potions extends Items{
     public void setHeal(int amt){
         heal = amt;
     }
-    @Override
+   /* @Override
     public void getItemName(){
         System.out.print("Potion");
-    }
+    }*/
 }

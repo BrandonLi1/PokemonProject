@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FightWindow {
+public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUMB0xEMZosWbyQo_Kil0Fb : whole class- built based off StartWindow
     JFrame screen;
     Container con;
 
@@ -26,12 +26,6 @@ public class FightWindow {
 
     static PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, enemy, activePokemon;
 
-
-    public static void main(String[] args) {
-        enemy= new Fire(1, 100, "Bulbasaur", "1", "y");
-        FightWindow x = new FightWindow(enemy);
-        x.createGameScreen();
-    }
 
     public FightWindow(PokemonType enemy) {//construct the Strings and stuff of the like
         this.enemy=enemy;
@@ -190,22 +184,34 @@ public class FightWindow {
             } else if (e.equals("move1")) {
                 move1();
                 if (enemy.getCurrentHealth()<=0) {
-                    //win con or smth
+                    mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                    activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
+                    activePokemon.checkLevelUp();
                 }
             } else if (e.equals("move2")) {
                 move2();
                 if (enemy.getCurrentHealth()<=0) {
-                    //win con or smth
+                    mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                    activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
+                    activePokemon.checkLevelUp();
                 }
             } else if (e.equals("move3")) {
                 move3();
                 if (enemy.getCurrentHealth()<=0) {
-                    //win con or smth
+                    mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                    activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
+                    activePokemon.checkLevelUp();
                 }
             } else if (e.equals("move4")) {
                 move4();
                 if (enemy.getCurrentHealth()<=0) {
-                    //win con or smth
+                    mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                    activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
+                    activePokemon.checkLevelUp();
                 }
             } else if (e.equals(pokemon1Name.toLowerCase())) {
                 pokemon1Switch();
@@ -234,7 +240,9 @@ public class FightWindow {
         }
     }
     public void run() {
-
+        if (Math.random()<=.5) {
+            mainTextArea.setText("Got Away Safely!");
+        }
     }
     public void bag() {
 
@@ -249,280 +257,48 @@ public class FightWindow {
 
 
     public void move1() {
-        String x= move1Name;
-        mainTextArea.setText(activePokemon.getName() + " used "  + x);
-        if (x.equals("Restore")) {
-            activePokemon.Restore(activePokemon);
-        }
-        if (activePokemon.getClass()==Fire.class) {
-            if (x.equals("Flamethrower")) {
-                ((Fire) activePokemon).Flamethrower(enemy);
-            }
-            if (x.equals("BlazingTorque")) {
-                ((Fire) activePokemon).BlazingTorque(enemy);
-            }
-            if (x.equals("Eruption")) {
-                ((Fire)activePokemon).Eruption(enemy);
-            }
-            if (x.equals("Inferno")) {
-                ((Fire)activePokemon).Inferno(enemy);
-            }
-            if (x.equals("BlueFlare")) {
-                ((Fire)activePokemon).BlueFlare(enemy);
-            }
-            if (x.equals("HeatWave")) {
-                ((Fire)activePokemon).HeatWave(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Water.class) {
-            if (x.equals("Aquajet")) {
-                ((Water) activePokemon).Aquajet(enemy);
-            }
-            if (x.equals("Aquaring")) {
-                ((Water) activePokemon).Aquaring(activePokemon);
-            }
-            if (x.equals("Bubble")) {
-                ((Water) activePokemon).Bubble(enemy);
-            }
-            if (x.equals("Hydropump")) {
-                ((Water) activePokemon).Hydropump(enemy);
-            }
-            if (x.equals("Bubblebeam")) {
-                ((Water) activePokemon).Bubblebeam(enemy);
-            }
-            if (x.equals("Razorshell")) {
-                ((Water) activePokemon).Razorshell(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Grass.class) {
-            if (x.equals("Bullet Seed")) {
-                ((Grass) activePokemon).bulletSeed(enemy);
-            }
-            if (x.equals("Magical Leaf")) {
-                ((Grass) activePokemon).magicalLeaf(enemy);
-            }
-            if (x.equals("Razor Leaf")) {
-                ((Grass) activePokemon).razorLeaf(enemy);
-            }
-            if (x.equals("Leaf Tornado")) {
-                ((Grass) activePokemon).leafTornado(enemy);
-            }
-            if (x.equals("Solar Beam")) {
-                ((Grass) activePokemon).solarBeam(enemy);
-            }
-        }
+        moveCheck(activePokemon, enemy, move1Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+
+       /* if (enemy.getCurrentHealth()>0) { //makes enemy use same move gotta change the movesetter to take an input and create new string variables for enemy moves
+            moveCheck(enemy, activePokemon, move1Name);
+        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
-
     }
     public void move2() {
-        String x= move2Name;
-        mainTextArea.setText(activePokemon.getName() + " used "  + x);
-        if (x.equals("Restore")) {
-            activePokemon.Restore(activePokemon);
-        }
-        if (activePokemon.getClass()==Fire.class) {
-            if (x.equals("Flamethrower")) {
-                ((Fire) activePokemon).Flamethrower(enemy);
-            }
-            if (x.equals("BlazingTorque")) {
-                ((Fire) activePokemon).BlazingTorque(enemy);
-            }
-            if (x.equals("Eruption")) {
-                ((Fire)activePokemon).Eruption(enemy);
-            }
-            if (x.equals("Inferno")) {
-                ((Fire)activePokemon).Inferno(enemy);
-            }
-            if (x.equals("BlueFlare")) {
-                ((Fire)activePokemon).BlueFlare(enemy);
-            }
-            if (x.equals("HeatWave")) {
-                ((Fire)activePokemon).HeatWave(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Water.class) {
-            if (x.equals("Aquajet")) {
-                ((Water) activePokemon).Aquajet(enemy);
-            }
-            if (x.equals("Aquaring")) {
-                ((Water) activePokemon).Aquaring(activePokemon);
-            }
-            if (x.equals("Bubble")) {
-                ((Water) activePokemon).Bubble(enemy);
-            }
-            if (x.equals("Hydropump")) {
-                ((Water) activePokemon).Hydropump(enemy);
-            }
-            if (x.equals("Bubblebeam")) {
-                ((Water) activePokemon).Bubblebeam(enemy);
-            }
-            if (x.equals("Razorshell")) {
-                ((Water) activePokemon).Razorshell(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Grass.class) {
-            if (x.equals("Bullet Seed")) {
-                ((Grass) activePokemon).bulletSeed(enemy);
-            }
-            if (x.equals("Magical Leaf")) {
-                ((Grass) activePokemon).magicalLeaf(enemy);
-            }
-            if (x.equals("Razor Leaf")) {
-                ((Grass) activePokemon).razorLeaf(enemy);
-            }
-            if (x.equals("Leaf Tornado")) {
-                ((Grass) activePokemon).leafTornado(enemy);
-            }
-            if (x.equals("Solar Beam")) {
-                ((Grass) activePokemon).solarBeam(enemy);
-            }
-        }
+        moveCheck(activePokemon, enemy, move2Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+
+       /* if (enemy.getCurrentHealth()>0) {
+            moveCheck(enemy, activePokemon, move2Name);
+        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
-
     }
     public void move3() {
-        String x= move3Name;
-        mainTextArea.setText(activePokemon.getName() + " used "  + x);
-        if (x.equals("Restore")) {
-            activePokemon.Restore(activePokemon);
-        }
-        if (activePokemon.getClass()==Fire.class) {
-            if (x.equals("Flamethrower")) {
-                ((Fire) activePokemon).Flamethrower(enemy);
-            }
-            if (x.equals("BlazingTorque")) {
-                ((Fire) activePokemon).BlazingTorque(enemy);
-            }
-            if (x.equals("Eruption")) {
-                ((Fire)activePokemon).Eruption(enemy);
-            }
-            if (x.equals("Inferno")) {
-                ((Fire)activePokemon).Inferno(enemy);
-            }
-            if (x.equals("BlueFlare")) {
-                ((Fire)activePokemon).BlueFlare(enemy);
-            }
-            if (x.equals("HeatWave")) {
-                ((Fire)activePokemon).HeatWave(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Water.class) {
-            if (x.equals("Aquajet")) {
-                ((Water) activePokemon).Aquajet(enemy);
-            }
-            if (x.equals("Aquaring")) {
-                ((Water) activePokemon).Aquaring(activePokemon);
-            }
-            if (x.equals("Bubble")) {
-                ((Water) activePokemon).Bubble(enemy);
-            }
-            if (x.equals("Hydropump")) {
-                ((Water) activePokemon).Hydropump(enemy);
-            }
-            if (x.equals("Bubblebeam")) {
-                ((Water) activePokemon).Bubblebeam(enemy);
-            }
-            if (x.equals("Razorshell")) {
-                ((Water) activePokemon).Razorshell(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Grass.class) {
-            if (x.equals("Bullet Seed")) {
-                ((Grass) activePokemon).bulletSeed(enemy);
-            }
-            if (x.equals("Magical Leaf")) {
-                ((Grass) activePokemon).magicalLeaf(enemy);
-            }
-            if (x.equals("Razor Leaf")) {
-                ((Grass) activePokemon).razorLeaf(enemy);
-            }
-            if (x.equals("Leaf Tornado")) {
-                ((Grass) activePokemon).leafTornado(enemy);
-            }
-            if (x.equals("Solar Beam")) {
-                ((Grass) activePokemon).solarBeam(enemy);
-            }
-        }
+        moveCheck(activePokemon, enemy, move3Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+
+      /*  if (enemy.getCurrentHealth()>0) {
+            moveCheck(enemy, activePokemon, move3Name);
+        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
-
     }
     public void move4() {
-        String x= move4Name;
-        mainTextArea.setText(activePokemon.getName() + " used "  + x);
-        if (x.equals("Restore")) {
-            activePokemon.Restore(activePokemon);
-        }
-        if (activePokemon.getClass()==Fire.class) {
-            if (x.equals("Flamethrower")) {
-                ((Fire) activePokemon).Flamethrower(enemy);
-            }
-            if (x.equals("BlazingTorque")) {
-                ((Fire) activePokemon).BlazingTorque(enemy);
-            }
-            if (x.equals("Eruption")) {
-                ((Fire)activePokemon).Eruption(enemy);
-            }
-            if (x.equals("Inferno")) {
-                ((Fire)activePokemon).Inferno(enemy);
-            }
-            if (x.equals("BlueFlare")) {
-                ((Fire)activePokemon).BlueFlare(enemy);
-            }
-            if (x.equals("HeatWave")) {
-                ((Fire)activePokemon).HeatWave(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Water.class) {
-            if (x.equals("Aquajet")) {
-                ((Water) activePokemon).Aquajet(enemy);
-            }
-            if (x.equals("Aquaring")) {
-                ((Water) activePokemon).Aquaring(activePokemon);
-            }
-            if (x.equals("Bubble")) {
-                ((Water) activePokemon).Bubble(enemy);
-            }
-            if (x.equals("Hydropump")) {
-                ((Water) activePokemon).Hydropump(enemy);
-            }
-            if (x.equals("Bubblebeam")) {
-                ((Water) activePokemon).Bubblebeam(enemy);
-            }
-            if (x.equals("Razorshell")) {
-                ((Water) activePokemon).Razorshell(enemy);
-            }
-        }
-        if (activePokemon.getClass()==Grass.class) {
-            if (x.equals("Bullet Seed")) {
-                ((Grass) activePokemon).bulletSeed(enemy);
-            }
-            if (x.equals("Magical Leaf")) {
-                ((Grass) activePokemon).magicalLeaf(enemy);
-            }
-            if (x.equals("Razor Leaf")) {
-                ((Grass) activePokemon).razorLeaf(enemy);
-            }
-            if (x.equals("Leaf Tornado")) {
-                ((Grass) activePokemon).leafTornado(enemy);
-            }
-            if (x.equals("Solar Beam")) {
-                ((Grass) activePokemon).solarBeam(enemy);
-            }
-        }
+        moveCheck(activePokemon, enemy, move4Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
+
+       /* if (enemy.getCurrentHealth()>0) {
+            moveCheck(enemy, activePokemon, move4Name);
+        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
-
     }
     public void pokemon1Switch() {
         moveSetter(pokemon1);
@@ -624,7 +400,7 @@ public class FightWindow {
         movesButtonSetter(move4, move4Name,"move4", movePanel);
     }
 
-    private void moveSetter(PokemonType pokemon) {
+    private void moveSetter(PokemonType pokemon) {//code with parameter so enemy can also use moves
         if (pokemon.getClass()==Fire.class) {
             int count=1;
             for (int i = 0; i < 4; i++) {
@@ -935,6 +711,70 @@ public class FightWindow {
                     }
                 }
                 count++;
+            }
+        }
+    }
+    private void moveCheck(PokemonType active, PokemonType target, String moveName) {
+        String x= moveName;
+        mainTextArea.setText(active.getName() + " used "  + x);
+        if (x.equals("Restore")) {
+            active.Restore(active);
+        }
+        if (active.getClass()==Fire.class) {
+            if (x.equals("Flamethrower")) {
+                ((Fire) active).Flamethrower(target);
+            }
+            if (x.equals("BlazingTorque")) {
+                ((Fire) active).BlazingTorque(target);
+            }
+            if (x.equals("Eruption")) {
+                ((Fire)active).Eruption(target);
+            }
+            if (x.equals("Inferno")) {
+                ((Fire)active).Inferno(target);
+            }
+            if (x.equals("BlueFlare")) {
+                ((Fire)active).BlueFlare(target);
+            }
+            if (x.equals("HeatWave")) {
+                ((Fire)active).HeatWave(target);
+            }
+        }
+        if (active.getClass()==Water.class) {
+            if (x.equals("Aquajet")) {
+                ((Water) active).Aquajet(target);
+            }
+            if (x.equals("Aquaring")) {
+                ((Water) active).Aquaring(active);
+            }
+            if (x.equals("Bubble")) {
+                ((Water) active).Bubble(target);
+            }
+            if (x.equals("Hydropump")) {
+                ((Water) active).Hydropump(target);
+            }
+            if (x.equals("Bubblebeam")) {
+                ((Water) active).Bubblebeam(target);
+            }
+            if (x.equals("Razorshell")) {
+                ((Water) active).Razorshell(target);
+            }
+        }
+        if (activePokemon.getClass()==Grass.class) {
+            if (x.equals("Bullet Seed")) {
+                ((Grass) active).bulletSeed(target);
+            }
+            if (x.equals("Magical Leaf")) {
+                ((Grass) active).magicalLeaf(target);
+            }
+            if (x.equals("Razor Leaf")) {
+                ((Grass) active).razorLeaf(target);
+            }
+            if (x.equals("Leaf Tornado")) {
+                ((Grass) active).leafTornado(target);
+            }
+            if (x.equals("Solar Beam")) {
+                ((Grass) active).solarBeam(target);
             }
         }
     }

@@ -80,7 +80,6 @@ public class PokemonType {
             currentHealth=getHealth();
         }
     }
-    //make xp formula bruv
 
     public int getPower() {
         return power;

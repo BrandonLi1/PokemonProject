@@ -21,7 +21,7 @@ public class Fire extends PokemonType{
             int damage=(int)(checkDamage()*checkEffective(target));
             target.setCurrentHealth(target.getCurrentHealth()-damage);
             if (Math.random()*10==0 && !(target instanceof Fire)) {
-                setBurning(true);
+                target.setBurning(true);
             }
         }
     }
@@ -31,9 +31,9 @@ public class Fire extends PokemonType{
         if (checkHit()) {
             setPower(80);
             int damage=(int)(checkDamage()*checkEffective(target));
-            target.setCurrentHealth(getCurrentHealth()-damage);
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
             if (Math.random()*10<=2&& !(target instanceof Fire)) {
-                setBurning(true);
+                target.setBurning(true);
             }
         }
     }
@@ -43,7 +43,7 @@ public class Fire extends PokemonType{
         if (checkHit()) {
             setPower(150);
             int damage = (int)((checkDamage()*((double)getHealth()/getCurrentHealth())*checkEffective(target)));
-            target.setCurrentHealth((target.getHealth())-damage);
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
         }
     }
 
@@ -52,9 +52,9 @@ public class Fire extends PokemonType{
         if (checkHit()) {
             setPower(100);
             int damage=(int)(checkDamage()*checkEffective(target));
-            target.setCurrentHealth(getCurrentHealth()-damage);
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
             if (!(target instanceof Fire)) {
-                setBurning(true);
+                target.setBurning(true);
             }
         }
     }
@@ -64,9 +64,9 @@ public class Fire extends PokemonType{
         if (checkHit()) {
             setPower(130);
             int damage=(int)(checkDamage()*checkEffective(target));
-            target.setCurrentHealth(getCurrentHealth()-damage);
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
             if (Math.random()*10<=1 && !(target instanceof Fire)) {
-                setBurning(true);
+                target.setBurning(true);
             }
         }
     }
@@ -76,9 +76,9 @@ public class Fire extends PokemonType{
         if (checkHit()) {
             setPower(95);
             int damage=(int)(checkDamage()*checkEffective(target));
-            target.setCurrentHealth(getCurrentHealth()-damage);
+            target.setCurrentHealth(target.getCurrentHealth()-damage);
             if (Math.random()*10==0 && !(target instanceof Fire)) {
-                setBurning(true);
+               target.setBurning(true);
             }
         }
     }

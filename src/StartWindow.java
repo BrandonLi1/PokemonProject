@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StartWindow{
+public class StartWindow{ //https://www.youtube.com/playlist?list=PL_QPQmz5C6WUMB0xEMZosWbyQo_Kil0Fb : whole class
     static JFrame window;
     Container con;
     JPanel titleNamePanel;

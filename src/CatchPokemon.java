@@ -4,8 +4,7 @@ public class CatchPokemon {
     public boolean capture(){
         if (Player.pokeballamt() > 0){
 
-        } else {
-            return false;
         }
+        return false;
     }
 }
