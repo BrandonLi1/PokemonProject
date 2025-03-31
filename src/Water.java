@@ -16,6 +16,9 @@ public class Water extends PokemonType{
         setAccuracy(100);
         if (checkHit()) {
             setHealth(getCurrentHealth() + 10);
+            if (getCurrentHealth()>getHealth()) {
+                setCurrentHealth(getHealth());
+            }
         }
     }
     public void Bubble(PokemonType target){

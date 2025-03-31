@@ -121,5 +121,8 @@ public class PokemonType {
 
     public void Restore(PokemonType self) {
         setCurrentHealth(currentHealth+(int)(health*.5));
+        if (currentHealth>health) {
+            currentHealth=health;
+        }
     }
 }

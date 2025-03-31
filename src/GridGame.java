@@ -199,7 +199,7 @@ public class GridGame {
     }
 
     public void encounter() {//wip
-        FightWindow x = new FightWindow(new Fire(1, 100, "Bulbasaur", "1", "y"));
+        FightWindow x = new FightWindow(new Fire(15, 100, "Bulbasaur", "1", "y"));
         x.createGameScreen();
     }
 

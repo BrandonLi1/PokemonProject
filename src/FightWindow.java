@@ -22,7 +22,8 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     choiceHandler choiceHandler = new choiceHandler();
 
     String move1Name, move2Name, move3Name, move4Name, pokemon1Name,
-            pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name;//make it name the moves based on the ints
+            pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name,
+            enemyMove1Name,enemyMove2Name,enemyMove3Name,enemyMove4Name;//make it name the moves based on the ints
 
     static PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, enemy, activePokemon;
 
@@ -61,28 +62,38 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         }
         activePokemon=pokemon1;
         moveSetter(pokemon1);
+        enemyMoveSetter(enemy);
     }
 
 
     public void switchScreen() {
         switchPanel = new JPanel();
-        switchPanel.setBounds(0, 0, 400, 800);
+        switchPanel.setBounds(600, 0, 400, 800);
         switchPanel.setBackground(Color.blue);
         switchPanel.setLayout(new GridLayout(3, 2));
-        switchPanel.setVisible(true);
-        if (pokemon1!=null) {
+        actionPanel.setVisible(false);
+        movePanel.setVisible(false);
+        if (pokemon1!=null && !pokemon1Name.equals("test")) {
             buttonSetter(pokemon1Button, pokemon1Name, switchPanel);
         }
-        if (pokemon2!=null)
-        buttonSetter(pokemon2Button, pokemon2Name, switchPanel);
-        if (pokemon3!=null)
-        buttonSetter(pokemon3Button, pokemon3Name, switchPanel);
-        if (pokemon4!=null)
-        buttonSetter(pokemon4Button, pokemon4Name, switchPanel);
-        if (pokemon5!=null)
-        buttonSetter(pokemon5Button, pokemon5Name, switchPanel);
-        if (pokemon6!=null)
-        buttonSetter(pokemon6Button, pokemon6Name, switchPanel);
+        if (pokemon2!=null && !pokemon2Name.equals("test")) {
+            buttonSetter(pokemon2Button, pokemon2Name, switchPanel);
+            }
+        if (pokemon3!=null && !pokemon3Name.equals("test")) {
+            buttonSetter(pokemon3Button, pokemon3Name, switchPanel);
+            }
+        if (pokemon4!=null && !pokemon4Name.equals("test")) {
+            buttonSetter(pokemon4Button, pokemon4Name, switchPanel);
+         }
+        if (pokemon5!=null && !pokemon5Name.equals("test")) {
+            buttonSetter(pokemon5Button, pokemon5Name, switchPanel);
+        }
+        if (pokemon6!=null && !pokemon6Name.equals("test")) {
+            buttonSetter(pokemon6Button, pokemon6Name, switchPanel);
+        }
+        switchPanel.setVisible(true);
+        con.add(switchPanel);
+        mainTextArea.setText("Who will you switch to");
     }
 
     public void createGameScreen() {
@@ -214,34 +225,66 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     activePokemon.checkLevelUp();
                 }
             } else if (e.equals(pokemon1Name.toLowerCase())) {
-                pokemon1Switch();
-                activePokemon=pokemon1;
+                if (pokemon1!=null && pokemon1.getCurrentHealth()>0) {
+                    pokemon1Switch();
+                    switchPanel.setVisible(false);
+                    actionPanel.setVisible(true);
+                    mainTextArea.setText("What will you do?");
+                    activePokemon = pokemon1;
+                }
             }
             else if (e.equals(pokemon2Name.toLowerCase())) {
-                pokemon2Switch();
-                activePokemon=pokemon2;
+                if (pokemon2!=null && pokemon2.getCurrentHealth()>0) {
+                    pokemon2Switch();
+                    switchPanel.setVisible(false);
+                    actionPanel.setVisible(true);
+                    mainTextArea.setText("What will you do?");
+                    activePokemon = pokemon2;
+                }
             }
             else if (e.equals(pokemon3Name.toLowerCase())) {
-                pokemon3Switch();
-                activePokemon=pokemon3;
+                if (pokemon3!=null && pokemon3.getCurrentHealth()>0) {
+                    pokemon3Switch();
+                    switchPanel.setVisible(false);
+                    actionPanel.setVisible(true);
+                    mainTextArea.setText("What will you do?");
+                    activePokemon = pokemon3;
+                }
             }
             else if (e.equals(pokemon4Name.toLowerCase())) {
-                pokemon4Switch();
-                activePokemon=pokemon4;
+                if (pokemon4!=null && pokemon4.getCurrentHealth()>0) {
+                    pokemon4Switch();
+                    switchPanel.setVisible(false);
+                    actionPanel.setVisible(true);
+                    mainTextArea.setText("What will you do?");
+                    activePokemon = pokemon4;
+                }
             }
             else if (e.equals(pokemon5Name.toLowerCase())) {
-                pokemon5Switch();
-                activePokemon=pokemon5;
+                if (pokemon5!=null && pokemon5.getCurrentHealth()>0) {
+                    pokemon5Switch();
+                    switchPanel.setVisible(false);
+                    actionPanel.setVisible(true);
+                    mainTextArea.setText("What will you do?");
+                    activePokemon = pokemon5;
+                }
             }
             else if (e.equals(pokemon6Name.toLowerCase())) {
-                pokemon6Switch();
-                activePokemon=pokemon6;
+                if (pokemon6!=null && pokemon6.getCurrentHealth()>0) {
+                    pokemon6Switch();
+                    switchPanel.setVisible(false);
+                    actionPanel.setVisible(true);
+                    mainTextArea.setText("What will you do?");
+                    activePokemon = pokemon6;
+                }
             }
         }
     }
     public void run() {
         if (Math.random()<=.5) {
             mainTextArea.setText("Got Away Safely!");
+        } else {
+            enemyAttack();
         }
     }
     public void bag() {
@@ -255,84 +298,104 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         switchScreen();
     }
 
-
     public void move1() {
         moveCheck(activePokemon, enemy, move1Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
-
-       /* if (enemy.getCurrentHealth()>0) { //makes enemy use same move gotta change the movesetter to take an input and create new string variables for enemy moves
-            moveCheck(enemy, activePokemon, move1Name);
-        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
+        enemyAttack();
     }
     public void move2() {
         moveCheck(activePokemon, enemy, move2Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
-
-       /* if (enemy.getCurrentHealth()>0) {
-            moveCheck(enemy, activePokemon, move2Name);
-        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
+        enemyAttack();
     }
     public void move3() {
         moveCheck(activePokemon, enemy, move3Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
 
-      /*  if (enemy.getCurrentHealth()>0) {
-            moveCheck(enemy, activePokemon, move3Name);
-        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
+        enemyAttack();
     }
     public void move4() {
         moveCheck(activePokemon, enemy, move4Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
 
-       /* if (enemy.getCurrentHealth()>0) {
-            moveCheck(enemy, activePokemon, move4Name);
-        }*/
         movePanel.setVisible(false);
         actionPanel.setVisible(true);
+        enemyAttack();
     }
     public void pokemon1Switch() {
         moveSetter(pokemon1);
-        ownStats.setText(pokemon1Name +"     Level" + pokemon1.getLevel() + "\n\n Health: " +
+        ownStats.setText(pokemon1Name +"     Level " + pokemon1.getLevel() + "\n\n Health: " +
                 pokemon1.getCurrentHealth() + "/" + pokemon1.getHealth());
+        mainTextArea.setText("You have switched to " + pokemon1Name);
+        enemyAttack();
     }
     public void pokemon2Switch() {
         moveSetter(pokemon2);
-        ownStats.setText(pokemon2Name + "     Level" + pokemon2.getLevel() +"\n\n Health: " +
+        ownStats.setText(pokemon2Name + "     Level " + pokemon2.getLevel() +"\n\n Health: " +
                 pokemon2.getCurrentHealth() + "/" + pokemon2.getHealth());
+        mainTextArea.setText("You have switched to " + pokemon2Name);
+        enemyAttack();
+
     }
     public void pokemon3Switch() {
         moveSetter(pokemon3);
-        ownStats.setText(pokemon3Name + "     Level" + pokemon3.getLevel() +"\n\n Health: " +
+        ownStats.setText(pokemon3Name + "     Level " + pokemon3.getLevel() +"\n\n Health: " +
                 pokemon3.getCurrentHealth() + "/" + pokemon3.getHealth());
+        mainTextArea.setText("You have switched to " + pokemon3Name);
+        enemyAttack();
     }
     public void pokemon4Switch() {
         moveSetter(pokemon4);
-        ownStats.setText(pokemon4Name + "     Level" + pokemon4.getLevel() +"\n\n Health: " +
+        ownStats.setText(pokemon4Name + "     Level " + pokemon4.getLevel() +"\n\n Health: " +
                 pokemon4.getCurrentHealth() + "/" + pokemon4.getHealth());
+        mainTextArea.setText("You have switched to " + pokemon4Name);
+        enemyAttack();
     }
     public void pokemon5Switch() {
         moveSetter(pokemon5);
-        ownStats.setText(pokemon5Name + "     Level" + pokemon5.getLevel() +"\n\n Health: " +
+        ownStats.setText(pokemon5Name + "     Level " + pokemon5.getLevel() +"\n\n Health: " +
                 pokemon5.getCurrentHealth() + "/" + pokemon5.getHealth());
+        mainTextArea.setText("You have switched to " + pokemon5Name);
+        enemyAttack();
     }
     public void pokemon6Switch() {
         moveSetter(pokemon6);
-        ownStats.setText(pokemon6Name + "     Level" + pokemon6.getLevel() +"\n\n Health: " +
+        ownStats.setText(pokemon6Name + "     Level " + pokemon6.getLevel() +"\n\n Health: " +
                 pokemon6.getCurrentHealth() + "/" + pokemon6.getHealth());
+        mainTextArea.setText("You have switched to " + pokemon6Name);
+        enemyAttack();
     }
 
     private void buttonSetter(JButton button, String name, JPanel buttonPanel) {
         button=new JButton(name);
+        if (name.equals(pokemon1Name)) {
+            pokemon1Button=new JButton(pokemon1Name + "\n" + "Health: " + pokemon1.getCurrentHealth() + "/" + pokemon1.getHealth());
+        }
+        if (name.equals(pokemon2Name)) {
+            pokemon2Button=new JButton(pokemon2Name + "\n" + "Health: " + pokemon2.getCurrentHealth() + "/" + pokemon2.getHealth());
+        }
+        if (name.equals(pokemon3Name)) {
+            pokemon3Button=new JButton(pokemon3Name + "\n" + "Health: " + pokemon3.getCurrentHealth() + "/" + pokemon3.getHealth());
+        }
+        if (name.equals(pokemon4Name)) {
+            pokemon4Button=new JButton(pokemon4Name + "\n" + "Health: " + pokemon4.getCurrentHealth() + "/" + pokemon4.getHealth());
+        }
+        if (name.equals(pokemon5Name)) {
+            pokemon5Button=new JButton(pokemon5Name + "\n" + "Health: " + pokemon5.getCurrentHealth() + "/" + pokemon5.getHealth());
+        }
+        if (name.equals(pokemon6Name)) {
+            pokemon6Button=new JButton(pokemon6Name + "\n" + "Health: " + pokemon6.getCurrentHealth() + "/" + pokemon6.getHealth());
+        }
         button.setBackground(Color.black);
         button.setForeground(Color.white);
         button.setFont(buttonFont);
@@ -712,8 +775,325 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 }
                 count++;
             }
+
         }
     }
+    private void enemyMoveSetter(PokemonType pokemon) {//code with parameter so enemy can also use enemyMoves
+        if (pokemon.getClass()==Fire.class) {
+            int count=1;
+            for (int i = 0; i < 4; i++) {
+                if (pokemon.moveList[i]==1) {
+                    if (count == 1) {
+                        enemyMove1Name="Restore";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Restore";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Restore";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Restore";
+                    }
+                }
+                if (pokemon.moveList[i]==2) {
+                    if (count == 1) {
+                        enemyMove1Name="Flamethrower";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Flamethrower";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Flamethrower";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Flamethrower";
+                    }
+                }
+                if (pokemon.moveList[i]==3) {
+                    if (count == 1) {
+                        enemyMove1Name="BlazingTorque";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="BlazingTorque";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="BlazingTorque";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="BlazingTorque";
+                    }
+                }
+                if (pokemon.moveList[i]==4) {
+                    if (count == 1) {
+                        enemyMove1Name="Eruption";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Eruption";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Eruption";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Eruption";
+                    }
+                }
+                if (pokemon.moveList[i]==5) {
+                    if (count == 1) {
+                        enemyMove1Name="Inferno";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Inferno";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Inferno";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Inferno";
+                    }
+                }
+                if (pokemon.moveList[i]==6) {
+                    if (count == 1) {
+                        enemyMove1Name="BlueFlare";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="BlueFlare";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="BlueFlare";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="BlueFlare";
+                    }
+                }
+                if (pokemon.moveList[i]==7) {
+                    if (count == 1) {
+                        enemyMove1Name="HeatWave";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="HeatWave";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="HeatWave";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="HeatWave";
+                    }
+                }
+                count++;
+            }
+        }
+        if (pokemon.getClass()==Water.class) {
+            int count = 1;
+            for (int i = 0; i < 4; i++) {
+                if (pokemon.moveList[i] == 1) {
+                    if (count == 1) {
+                        enemyMove1Name = "Aquajet";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name = "Aquajet";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name = "Aquajet";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name = "Aquajet";
+                    }
+                }
+                if (pokemon.moveList[i] == 2) {
+                    if (count == 1) {
+                        enemyMove1Name = "Aquaring";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name = "Aquaring";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name = "Aquaring";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name = "Aquaring";
+                    }
+                }
+                if (pokemon.moveList[i] == 3) {
+                    if (count == 1) {
+                        enemyMove1Name = "Bubble";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name = "Bubble";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name = "Bubble";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name = "Bubble";
+                    }
+                }
+                if (pokemon.moveList[i] == 4) {
+                    if (count == 1) {
+                        enemyMove1Name = "Hydropump";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name = "Hydropump";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name = "Hydropump";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name = "Hydropump";
+                    }
+                }
+                if (pokemon.moveList[i] == 5) {
+                    if (count == 1) {
+                        enemyMove1Name = "Bubblebeam";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name = "Bubblebeam";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name = "Bubblebeam";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name = "Bubblebeam";
+                    }
+                }
+                if (pokemon.moveList[i] == 6) {
+                    if (count == 1) {
+                        enemyMove1Name = "Razorshell";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name = "Razorshell";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name = "Razorshell";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name = "Razorshell";
+                    }
+                }
+                if (pokemon.moveList[i] == 7) {
+                    if (count == 1) {
+                        enemyMove1Name = "Restore";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name = "Restore";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name = "Restore";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name = "Restore";
+                    }
+                }
+                count++;
+            }
+        }
+        if (pokemon.getClass()==Grass.class) {
+            int count = 1;
+            for (int i = 0; i < 4; i++) {
+                if (pokemon.moveList[i]==1) {
+                    if (count == 1) {
+                        enemyMove1Name="Restore";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Restore";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Restore";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Restore";
+                    }
+                }
+                if (pokemon.moveList[i]==2) {
+                    if (count == 1) {
+                        enemyMove1Name="Absorb";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Absorb";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Absorb";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Absorb";
+                    }
+                }
+                if (pokemon.moveList[i]==3) {
+                    if (count == 1) {
+                        enemyMove1Name= "Bullet Seed";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name= "Bullet Seed";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name= "Bullet Seed";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name= "Bullet Seed";
+                    }
+                }
+                if (pokemon.moveList[i]==4) {
+                    if (count == 1) {
+                        enemyMove1Name= "Magical Leaf";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Magical Leaf";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Magical Leaf";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Magical Leaf";
+                    }
+                }
+                if (pokemon.moveList[i]==5) {
+                    if (count == 1) {
+                        enemyMove1Name= "Razor Leaf";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Razor Leaf";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Razor Leaf";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Razor Leaf";
+                    }
+                }
+                if (pokemon.moveList[i]==6) {
+                    if (count == 1) {
+                        enemyMove1Name= "Leaf Tornado";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Leaf Tornado";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Leaf Tornado";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Leaf Tornado";
+                    }
+                }
+                if (pokemon.moveList[i]==7) {
+                    if (count == 1) {
+                        enemyMove1Name= "Solar Beam";
+                    }
+                    if (count == 2) {
+                        enemyMove2Name="Solar Beam";
+                    }
+                    if (count == 3) {
+                        enemyMove3Name="Solar Beam";
+                    }
+                    if (count == 4) {
+                        enemyMove4Name="Solar Beam";
+                    }
+                }
+                count++;
+            }
+        }
+    }
+
+
     private void moveCheck(PokemonType active, PokemonType target, String moveName) {
         String x= moveName;
         mainTextArea.setText(active.getName() + " used "  + x);
@@ -777,5 +1157,45 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 ((Grass) active).solarBeam(target);
             }
         }
+    }
+    private void enemyAttack() {
+            if (enemy.getCurrentHealth()>0) {
+                int x = (int)(Math.random()*4+1);
+                if (x==1) {
+                    moveCheck(enemy, activePokemon, enemyMove1Name);
+                }
+                if (x==2) {
+                    moveCheck(enemy, activePokemon, enemyMove2Name);
+                }
+                if (x==3) {
+                    moveCheck(enemy, activePokemon, enemyMove3Name);
+                }
+                if (x==4) {
+                    moveCheck(enemy, activePokemon, enemyMove4Name);
+                }
+                ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() +  "\n\n Health: " +
+                        activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
+            }
+            if (activePokemon.getCurrentHealth()<=0) {
+                if (!checkLose()) {
+                    switchScreen();
+                    actionPanel.setVisible(false);
+                    movePanel.setVisible(false);
+                } else {
+                    mainTextArea.setText("You lose");
+                    //say more stuff for lose
+                }
+            }
+    }
+    private boolean checkLose() {
+        if (pokemon1==null || pokemon1.getCurrentHealth()<=0
+        && (pokemon2==null || pokemon2.getCurrentHealth()<=0)
+        && (pokemon3==null || pokemon3.getCurrentHealth()<=0)
+        && (pokemon4==null || pokemon4.getCurrentHealth()<=0)
+        && (pokemon5==null || pokemon5.getCurrentHealth()<=0)
+        && (pokemon6==null || pokemon6.getCurrentHealth()<=0)) {
+            return true;
+        }
+        return false;
     }
 }
