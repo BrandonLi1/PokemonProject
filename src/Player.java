@@ -34,6 +34,15 @@ public class Player extends Space {
         }
         return amunt;
     }
+    public static int currentpartysize(){
+        int temp = 0;
+        for (int i = 0; i < party.length; i++) {
+            if(party[i] != null){
+                temp++;
+            }
+        }
+        return temp;
+    }
 
 
 
