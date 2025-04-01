@@ -283,6 +283,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     public void run() {
         if (Math.random()<=.5) {
             mainTextArea.setText("Got Away Safely!");
+            screen.dispose();
         } else {
             enemyAttack();
         }
@@ -414,6 +415,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         button.setActionCommand(inputName.toLowerCase());
         button.addActionListener(choiceHandler);
     }
+
 
     private void createButtons() {
         fight=new JButton("Fight");
@@ -777,6 +779,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
             }
 
         }
+
     }
     private void enemyMoveSetter(PokemonType pokemon) {//code with parameter so enemy can also use enemyMoves
         if (pokemon.getClass()==Fire.class) {
@@ -1095,6 +1098,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
 
     private void moveCheck(PokemonType active, PokemonType target, String moveName) {
+        checkBurning(active);
         String x= moveName;
         mainTextArea.setText(active.getName() + " used "  + x);
         if (x.equals("Restore")) {
@@ -1156,6 +1160,9 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
             if (x.equals("Solar Beam")) {
                 ((Grass) active).solarBeam(target);
             }
+            if (x.equals("Absorb")) {
+                ((Grass) active).absorb(target);
+            }
         }
     }
     private void enemyAttack() {
@@ -1197,5 +1204,22 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
             return true;
         }
         return false;
+    }
+
+    private void checkBurning(PokemonType target) {
+        if (target.isBurning()) {
+            target.setCurrentHealth(target.getCurrentHealth()-(int)(target.getHealth()*.1));
+        }
+    }
+
+    private void updateMoves() {
+        movePanel.remove(0);
+        movePanel.remove(0);
+        movePanel.remove(0);
+        movePanel.remove(0);
+        movesButtonSetter(move1, move1Name,"move1", movePanel);
+        movesButtonSetter(move2, move2Name,"move2",  movePanel);
+        movesButtonSetter(move3, move3Name,"move3", movePanel);
+        movesButtonSetter(move4, move4Name,"move4", movePanel);
     }
 }
