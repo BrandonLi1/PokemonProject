@@ -189,7 +189,7 @@ public class GridGame {
                 board[19][19]=new Space("🏥");
             }
         }
-        //run the gym fight
+        Gym gym = new Gym();
     }
     private void checkPokemon(String move) {
         playerPosition();
