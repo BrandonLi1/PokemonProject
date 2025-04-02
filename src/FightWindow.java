@@ -25,6 +25,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     String move1Name, move2Name, move3Name, move4Name, pokemon1Name,
             pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name,
             enemyMove1Name,enemyMove2Name,enemyMove3Name,enemyMove4Name;//make it name the moves based on the ints
+
     static PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, enemy, activePokemon;
 
 
@@ -108,6 +109,12 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         actionPanel.setLayout(new GridLayout(2, 2));
         actionPanel.setVisible(true);
 
+        itemPanel=new JPanel();
+        itemPanel.setBounds(400, 400, 600, 200);
+        itemPanel.setBackground(Color.black);
+        itemPanel.setLayout(new GridLayout(1, 2));
+        itemPanel.setVisible(false);
+
         mainTextPanel=new JPanel();
         mainTextPanel.setBounds(0, 700, 600, 300);;
         mainTextPanel.setBackground(Color.white);
@@ -180,6 +187,9 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         con.add(movePanel);
         con.add(movePanel);
         con.add(backPanel);
+        con.add(itemPanel);
+
+
     }
 
     private class choiceHandler implements ActionListener {
@@ -277,6 +287,19 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
                 }
+            } else if (e.equals("pokeball")) {
+                actionPanel.setVisible(true);
+                itemPanel.setVisible(false);
+//                CatchPokemon Catch = new CatchPokemon();
+                if (CatchPokemon.capture()) {
+                    screen.dispose();
+                }
+
+
+            } else if (e.equals("potion")) {
+                actionPanel.setVisible(true);
+                itemPanel.setVisible(false);
+                //fdsjiofhasdjilfasdh
             }
             else if (e.equals("back")) {
                 back();
@@ -294,7 +317,8 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         }
     }
     public void bag() {
-
+        actionPanel.setVisible(false);
+        itemPanel.setVisible(true);
     }
     public void fight() {
         actionPanel.setVisible(false);
@@ -491,6 +515,8 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         movesButtonSetter(move2, move2Name,"move2",  movePanel);
         movesButtonSetter(move3, move3Name,"move3", movePanel);
         movesButtonSetter(move4, move4Name,"move4", movePanel);
+        buttonSetter(pokeball,"pokeball", itemPanel);
+        buttonSetter(potion,"potion",itemPanel);
     }
 
     private void moveSetter(PokemonType pokemon) {//code with parameter so enemy can also use moves
