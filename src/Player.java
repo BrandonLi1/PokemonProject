@@ -10,6 +10,9 @@ public class Player extends Space {
         for (int i = 0; i < 6; i++) {
             party[i] = new PokemonType(0, 0, "test");
         }
+        //adding pokeballs just to test remove later
+        Items sfnsd = new Pokeballs(10,1,100);
+        addItemBag(sfnsd);
     }
 
 
@@ -33,6 +36,15 @@ public class Player extends Space {
             }
         }
         return amunt;
+    }
+    public static void removepokeball(){
+        for (int i = 0; i < itembag.size(); i++) {
+            boolean torf = true;
+            if(itembag.get(i).getItemName().equals("Pokeball") && torf){
+                itembag.remove(i);
+                torf = false;
+            }
+        }
     }
     public static int currentpartysize(){
         int temp = 0;
