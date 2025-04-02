@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GridGame {
@@ -22,6 +20,15 @@ public class GridGame {
 //            System.out.println(CreatePokemon.getPokemon().get(i).getName());
 //            System.out.println(CreatePokemon.getPokemon().get(i).getClass());
 //        }
+
+        //introduction
+        System.out.println("The sun rises over " + coloredText.YELLOW + "Velmara" + coloredText.RESET + ", casting golden light across the land. " +
+                "\nToday is the day you've been waiting for, the day you finally being your journey as a " + coloredText.GREEN + "Pokemon Trainer" + coloredText.RESET + "!" +
+                "\nWith your first Pokemon by your side, you set out toward " + coloredText.CYAN + "Crestforge City" + coloredText.RESET + "," +
+                "\nwhere a powerful " + coloredText.RED + "Gym Leader" + coloredText.RESET + " awaits. " +
+                "\nBut the road won't be easy. Wild Pokemon lurk in the tall grass. To prove yourself, you'll need to train and win battles. " +
+                "\nWill you rise to the challenge and claim victory at the gym? Your path to greatness starts now!");
+
         setupBoard();
         play();
 
