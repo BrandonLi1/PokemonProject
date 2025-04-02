@@ -103,6 +103,7 @@ public class GridGame {
                         }
                         temp = board[y - 1][x];
                         board[y - 1][x] = player;
+                        playerPosition();
                     } else {
                         System.out.println("Out of bounds");
                     }
@@ -118,6 +119,7 @@ public class GridGame {
                         }
                         temp = board[y][x - 1];
                         board[y][x - 1] = player;
+                        playerPosition();
                     } else {
                         System.out.println("Out of bounds");
                     }
@@ -133,6 +135,7 @@ public class GridGame {
                         }
                         temp = board[y + 1][x];
                         board[y + 1][x] = player;
+                        playerPosition();
                     } else {
                         System.out.println("Out of bounds");
                     }
@@ -148,6 +151,7 @@ public class GridGame {
                         }
                         temp = board[y][x + 1];
                         board[y][x + 1] = player;
+                        playerPosition();
                     } else {
                         System.out.println("Out of bounds");
                     }
