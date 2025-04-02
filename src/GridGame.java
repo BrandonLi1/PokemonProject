@@ -230,7 +230,8 @@ public class GridGame {
     }
 
     public void encounter() {//wip
-        RandomEncounter RandomEncounter = new RandomEncounter();
+       FightWindow x = new FightWindow(new Grass(12,100,"bulb","2","y"));
+               x.createGameScreen();
     }
 
 

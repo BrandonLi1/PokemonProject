@@ -299,7 +299,12 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
             } else if (e.equals("potion")) {
                 actionPanel.setVisible(true);
                 itemPanel.setVisible(false);
-                //fdsjiofhasdjilfasdh
+                if(activePokemon.getCurrentHealth()>0) {
+                  activePokemon.setCurrentHealth(activePokemon.getHealth() + 25);
+                    if (activePokemon.getCurrentHealth()>activePokemon.getHealth()) {
+                        activePokemon.setCurrentHealth(activePokemon.getHealth());
+                    }
+                }
             }
             else if (e.equals("back")) {
                 back();

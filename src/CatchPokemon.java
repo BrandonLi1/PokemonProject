@@ -6,7 +6,7 @@ public class CatchPokemon {
             // calculates if the capture was successful or not
             int random = (int )(Math.random() * 100) + 1;
             if (random > 25) {
-                System.out.println("false");
+                System.out.println("failed to catch pokemon");
                 return false;
             } else {
                 int x = 0;
@@ -19,12 +19,12 @@ public class CatchPokemon {
                 if (Player.party[x].getName().equals("test")) {
                     Player.party[x] = FightWindow.enemy;
                     Player.removepokeball();
-                    System.out.println("true");
+                    System.out.println("Caught the pokemon");
                     return true;
                 }
             }
         }
-        System.out.println("false2");
+        System.out.println("you don't have any pokeballs");
         return false;
     }
 }

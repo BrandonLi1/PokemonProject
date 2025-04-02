@@ -13,6 +13,8 @@ public class Player extends Space {
         //adding pokeballs just to test remove later
         Items sfnsd = new Pokeballs(10,1,100);
         addItemBag(sfnsd);
+        Items sfnss = new Potions(10,1,25);
+        addItemBag(sfnss);
     }
 
 
