@@ -231,7 +231,17 @@ public class GridGame {
 
     public void encounter() {//wip
        FightWindow x = new FightWindow(new Grass(12,100,"bulb","2","y"));
-               x.createGameScreen();
+       x.createGameScreen();
+        try {
+            synchronized (this) {
+                while (FightWindow.screen.isVisible()) {
+                    this.wait(10);
+                }
+
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

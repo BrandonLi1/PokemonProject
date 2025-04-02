@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUMB0xEMZosWbyQo_Kil0Fb : whole class- built based off StartWindow
-    JFrame screen;
+    static JFrame screen;
     Container con;
 
     JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel,
@@ -287,7 +287,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
                 }
-            } else if (e.equals("pokeball")) {
+            } else if (e.equals("pokeball") && !Gym.gymFight) {
                 actionPanel.setVisible(true);
                 itemPanel.setVisible(false);
 //                CatchPokemon Catch = new CatchPokemon();
@@ -1249,12 +1249,12 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     mainTextArea.setText("Who will you switch to");
                 } else {
                     mainTextArea.setText("You lose");
-                    //say more stuff for lose
+                    screen.dispose();
                 }
             }
     }
-    private boolean checkLose() {
-        if (pokemon1==null || pokemon1.getCurrentHealth()<=0
+    public boolean checkLose() {
+        if ((pokemon1==null || pokemon1.getCurrentHealth()<=0)
         && (pokemon2==null || pokemon2.getCurrentHealth()<=0)
         && (pokemon3==null || pokemon3.getCurrentHealth()<=0)
         && (pokemon4==null || pokemon4.getCurrentHealth()<=0)
