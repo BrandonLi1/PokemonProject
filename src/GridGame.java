@@ -157,6 +157,11 @@ public class GridGame {
                     }
                 }
             if (move.equals("WWSSADADBA")) { //funny konami code cheat code
+                if (temp!=null) {
+                    board[y][x] = temp;
+                } else {
+                    board[y][x]=new Space("⬜");
+                }
                 for (int i = 0; i < 6 && player.party[i]!=null; i++) {
                     player.party[i].setXp(25502500);
                     player.party[i].checkLevelUp();
