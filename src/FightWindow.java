@@ -7,11 +7,12 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     JFrame screen;
     Container con;
 
-    JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel, pokemonPanel,
-            mainTextPanel, switchPanel, itemPanel;
+    JPanel actionPanel, movePanel, ownStatsPanel, enemyStatsPanel,
+            mainTextPanel, switchPanel, itemPanel, backPanel;
 
     JButton fight, run, bag, move1, move2, move3, move4, pokemon, pokemon1Button,
-            pokemon2Button, pokemon3Button, pokemon4Button, pokemon5Button, pokemon6Button, pokeball, potion;
+            pokemon2Button, pokemon3Button, pokemon4Button, pokemon5Button, pokemon6Button,
+            pokeball, potion, backButton;
 
     Font buttonFont = new Font("Times New Roman", Font.PLAIN, 40);
     Font textFont = new Font("Times New Roman", Font.PLAIN, 30);
@@ -24,7 +25,6 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     String move1Name, move2Name, move3Name, move4Name, pokemon1Name,
             pokemon2Name,pokemon3Name,pokemon4Name,pokemon5Name,pokemon6Name,
             enemyMove1Name,enemyMove2Name,enemyMove3Name,enemyMove4Name;//make it name the moves based on the ints
-
     static PokemonType pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6, enemy, activePokemon;
 
 
@@ -67,28 +67,25 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
 
     public void switchScreen() {
-        switchPanel = new JPanel();
-        switchPanel.setBounds(600, 0, 400, 800);
-        switchPanel.setBackground(Color.blue);
-        switchPanel.setLayout(new GridLayout(3, 2));
+        switchPanel.setVisible(true);
         actionPanel.setVisible(false);
         movePanel.setVisible(false);
-        if (pokemon1!=null && !pokemon1Name.equals("test")) {
+        if (pokemon1!=null && !pokemon1Name.equals("test") && activePokemon!=pokemon1) {
             buttonSetter(pokemon1Button, pokemon1Name, switchPanel);
         }
-        if (pokemon2!=null && !pokemon2Name.equals("test")) {
+        if (pokemon2!=null && !pokemon2Name.equals("test") && activePokemon!=pokemon2) {
             buttonSetter(pokemon2Button, pokemon2Name, switchPanel);
             }
-        if (pokemon3!=null && !pokemon3Name.equals("test")) {
+        if (pokemon3!=null && !pokemon3Name.equals("test") && activePokemon!=pokemon3) {
             buttonSetter(pokemon3Button, pokemon3Name, switchPanel);
             }
-        if (pokemon4!=null && !pokemon4Name.equals("test")) {
+        if (pokemon4!=null && !pokemon4Name.equals("test") && activePokemon!=pokemon4) {
             buttonSetter(pokemon4Button, pokemon4Name, switchPanel);
          }
-        if (pokemon5!=null && !pokemon5Name.equals("test")) {
+        if (pokemon5!=null && !pokemon5Name.equals("test") && activePokemon!=pokemon5) {
             buttonSetter(pokemon5Button, pokemon5Name, switchPanel);
         }
-        if (pokemon6!=null && !pokemon6Name.equals("test")) {
+        if (pokemon6!=null && !pokemon6Name.equals("test") && activePokemon!=pokemon6) {
             buttonSetter(pokemon6Button, pokemon6Name, switchPanel);
         }
         switchPanel.setVisible(true);
@@ -111,11 +108,6 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         actionPanel.setLayout(new GridLayout(2, 2));
         actionPanel.setVisible(true);
 
-        pokemonPanel=new JPanel();
-        pokemonPanel.setBounds(0, 0, 800, 600);
-        pokemonPanel.setBackground(Color.blue);
-        pokemonPanel.setVisible(false);
-
         mainTextPanel=new JPanel();
         mainTextPanel.setBounds(0, 700, 600, 300);;
         mainTextPanel.setBackground(Color.white);
@@ -130,6 +122,17 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyStatsPanel.setBounds(1000, 0, 200, 100);
         enemyStatsPanel.setBackground(Color.white);
         con.add(enemyStatsPanel);
+
+        backPanel=new JPanel();
+        backPanel.setBounds(0, 0, 400, 300);
+        backPanel.setBackground(Color.black);
+        backPanel.setVisible(false);
+
+        switchPanel = new JPanel();
+        switchPanel.setBounds(600, 0, 400, 800);
+        switchPanel.setBackground(Color.black);
+        switchPanel.setLayout(new GridLayout(3, 2));
+        switchPanel.setVisible(false);
 
         //textAreas
         mainTextArea=new JTextArea();
@@ -172,20 +175,23 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         createButtons();
         con.add(actionPanel);
         con.add(movePanel);
-        con.add(pokemonPanel);
         con.add(movePanel);
+        con.add(backPanel);
     }
 
     private class choiceHandler implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             String e = event.getActionCommand();
             if (e.equals("bag")) {
+                backPanel.setVisible(true);
                 bag();
             } else if (e.equals("pokemon")) {
+                backPanel.setVisible(true);
                 Switch();
             } else if (e.equals("run")) {
                 run();
             } else if (e.equals("fight")) {
+                backPanel.setVisible(true);
                 fight();
             } else if (e.equals("move1")) {
                 move1();
@@ -266,6 +272,9 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
                 }
+            }
+            else if (e.equals("back")) {
+                back();
             }
         }
     }
@@ -373,6 +382,13 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyAttack();
 
     }
+    public void back() {
+        actionPanel.setVisible(true);
+        backPanel.setVisible(false);
+        switchPanel.setVisible(false);
+        itemPanel.setVisible(false);
+        movePanel.setVisible(false);
+    }
 
     private void buttonSetter(JButton button, String name, JPanel buttonPanel) {
         button=new JButton(name);
@@ -454,6 +470,16 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         actionPanel.add(pokemon);
         pokemon.setActionCommand("pokemon");
         pokemon.addActionListener(choiceHandler);
+
+        backButton=new JButton("back");
+        backButton.setSize(400, 300);
+        backButton.setBackground(Color.black);
+        backButton.setForeground(Color.white);
+        backButton.setFont(buttonFont);
+        backButton.setFocusPainted(false);
+        backPanel.add(backButton);
+        backButton.setActionCommand("back");
+        backButton.addActionListener(choiceHandler);
 
         moveSetter(pokemon1);
         movesButtonSetter(move1, move1Name,"move1", movePanel);

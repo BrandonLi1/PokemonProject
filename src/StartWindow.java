@@ -21,12 +21,6 @@ public class StartWindow{ //https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     TitleScreenHandler tsHandler=new TitleScreenHandler();
     choiceHandler choiceHandler = new choiceHandler();
 
-
-    public static void main(String[] args) {
-
-        new StartWindow();
-    }
-
     public StartWindow() {
 
         window=new JFrame();

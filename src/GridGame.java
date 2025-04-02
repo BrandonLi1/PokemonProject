@@ -104,6 +104,7 @@ public class GridGame {
                         temp = board[y - 1][x];
                         board[y - 1][x] = player;
                         playerPosition();
+                        count++;
                     } else {
                         System.out.println("Out of bounds");
                     }
@@ -120,6 +121,7 @@ public class GridGame {
                         temp = board[y][x - 1];
                         board[y][x - 1] = player;
                         playerPosition();
+                        count++;
                     } else {
                         System.out.println("Out of bounds");
                     }
@@ -136,6 +138,7 @@ public class GridGame {
                         temp = board[y + 1][x];
                         board[y + 1][x] = player;
                         playerPosition();
+                        count++;
                     } else {
                         System.out.println("Out of bounds");
                     }
@@ -152,6 +155,7 @@ public class GridGame {
                         temp = board[y][x + 1];
                         board[y][x + 1] = player;
                         playerPosition();
+                        count++;
                     } else {
                         System.out.println("Out of bounds");
                     }
@@ -169,11 +173,21 @@ public class GridGame {
                     board[19][0]=new Space("⬜");
                     board[0][18]=player;
                     playerPosition();
+                    count++;
                 }
                 temp=board[y][x];
                 count--;
             }
-            count++;
+            if (board[y][x]==board[19][19]) {
+                System.out.print("Do you want to enter the Pokecenter?(y/n): ");
+                String check = scanner.nextLine().toLowerCase();
+                if (check.equals("y")) {
+                    PokeCenter pokeCenter = new PokeCenter("🏥");
+                }
+                System.out.println("Come back soon");
+                board[19][18]=player;
+                board[19][19]=new Space("🏥");
+            }
         }
         //run the gym fight
     }

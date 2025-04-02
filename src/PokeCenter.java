@@ -3,24 +3,39 @@ public class PokeCenter extends Space{
     Scanner scanner = new Scanner(System.in);
     public PokeCenter(String symbol){
         super(symbol);
+        System.out.print("Do you want to visit the shop or heal?(s/h): ");
+        String x =scanner.nextLine().toLowerCase();
+        if (x.equals("s")) {
+            buyItems();
+        } else if (x.equals("h")) {
+            healPokemon();
+        } else {
+            System.out.println("invalid");
+        }
     }
+
     public void healPokemon(){
         String response = "";
-        System.out.print("Do you want me to heal all your pokemon? :) (yes / no):");
+        System.out.print("Do you want me to heal all your pokemon?(yes / no):");
         response = scanner.nextLine();
         if(response.equals("yes")){
             System.out.println("I will now heal all your pokemon");
-            // set all the pokemon in your inventory to have maximum health
+            for (int i = 0; i < 6; i++) {
+                if (Player.party[i]!=null && !Player.party[i].getName().equals("test")) {
+                    Player.party[i].setCurrentHealth(Player.party[i].getHealth());
+                }
+            }
         } else if(response.equals("no")){
             System.out.println("please come again");
         } else {
             System.out.println("invalid entry");
         }
     }
-    public void Buyitems(){
+
+    public void buyItems(){
         String response = "";
         int response2 = 0;
-        System.out.print("Do you wish to see our catalog of items? (yes / no): ");
+        System.out.print("Do you wish to see our catalog of items?(yes / no): ");
         response = scanner.nextLine();
         if(response.equals("yes")){
             System.out.println("here is all the items you can buy");
@@ -37,7 +52,6 @@ public class PokeCenter extends Space{
             } else {
                 System.out.println("invalid entry");
             }
-            // set all the pokemon in your inventory to have maximum ghealth
         } else if(response.equals("no")){
             System.out.println("please come again");
         } else {

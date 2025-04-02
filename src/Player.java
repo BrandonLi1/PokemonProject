@@ -7,7 +7,7 @@ public class Player extends Space {
     public Player(String name) {
         super(name); // symbol is first initial
         party = new PokemonType[6];
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             party[i] = new PokemonType(0, 0, "test");
         }
     }
