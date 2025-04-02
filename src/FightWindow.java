@@ -136,6 +136,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
         //textAreas
         mainTextArea=new JTextArea();
+        mainTextArea.setEditable(false);
         mainTextArea.setText("What will you do?");
         mainTextArea.setBounds(0, 700, 600, 300);
         mainTextArea.setBackground(Color.white);
@@ -145,6 +146,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         mainTextPanel.add(mainTextArea);
 
         ownStats = new JTextArea();
+        ownStats.setEditable(false);
         ownStats.setText(pokemon1Name + "     Level " + pokemon1.getLevel() + "\n\n Health: " +
                 pokemon1.getCurrentHealth() + "/" + pokemon1.getHealth());
         ownStats.setBounds(0, 300, 200, 100);
@@ -155,6 +157,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         ownStatsPanel.add(ownStats);
 
         enemyStats= new JTextArea();
+        enemyStats.setEditable(false);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
         enemyStats.setBounds(1000, 0, 200, 100);
@@ -189,7 +192,9 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 backPanel.setVisible(true);
                 Switch();
             } else if (e.equals("run")) {
-                run();
+                if (!Gym.gymFight) {
+                    run();
+                }
             } else if (e.equals("fight")) {
                 backPanel.setVisible(true);
                 fight();
