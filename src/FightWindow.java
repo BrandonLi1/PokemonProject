@@ -111,11 +111,6 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         actionPanel.setLayout(new GridLayout(2, 2));
         actionPanel.setVisible(true);
 
-        movePanel=new JPanel();
-        movePanel.setBounds(400, 400, 200, 200);
-        movePanel.setBackground(Color.black);
-        movePanel.setVisible(false);
-
         pokemonPanel=new JPanel();
         pokemonPanel.setBounds(0, 0, 800, 600);
         pokemonPanel.setBackground(Color.blue);
@@ -226,62 +221,58 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 }
             } else if (e.equals(pokemon1Name.toLowerCase())) {
                 if (pokemon1!=null && pokemon1.getCurrentHealth()>0) {
+                    activePokemon = pokemon1;
                     pokemon1Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
-                    mainTextArea.setText("What will you do?");
-                    activePokemon = pokemon1;
                 }
             }
             else if (e.equals(pokemon2Name.toLowerCase())) {
                 if (pokemon2!=null && pokemon2.getCurrentHealth()>0) {
+                    activePokemon = pokemon2;
                     pokemon2Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
-                    mainTextArea.setText("What will you do?");
-                    activePokemon = pokemon2;
                 }
             }
             else if (e.equals(pokemon3Name.toLowerCase())) {
                 if (pokemon3!=null && pokemon3.getCurrentHealth()>0) {
+                    activePokemon = pokemon3;
                     pokemon3Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
-                    mainTextArea.setText("What will you do?");
-                    activePokemon = pokemon3;
                 }
             }
             else if (e.equals(pokemon4Name.toLowerCase())) {
                 if (pokemon4!=null && pokemon4.getCurrentHealth()>0) {
+                    activePokemon = pokemon4;
                     pokemon4Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
-                    mainTextArea.setText("What will you do?");
-                    activePokemon = pokemon4;
                 }
             }
             else if (e.equals(pokemon5Name.toLowerCase())) {
                 if (pokemon5!=null && pokemon5.getCurrentHealth()>0) {
+                    activePokemon = pokemon5;
                     pokemon5Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
-                    mainTextArea.setText("What will you do?");
-                    activePokemon = pokemon5;
                 }
             }
             else if (e.equals(pokemon6Name.toLowerCase())) {
                 if (pokemon6!=null && pokemon6.getCurrentHealth()>0) {
+                    activePokemon = pokemon6;
                     pokemon6Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
-                    mainTextArea.setText("What will you do?");
-                    activePokemon = pokemon6;
                 }
             }
         }
     }
     public void run() {
         if (Math.random()<=.5) {
+            System.out.println();
+            System.out.println("Got Away Safely!");
             mainTextArea.setText("Got Away Safely!");
             screen.dispose();
         } else {
@@ -334,47 +325,53 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyAttack();
     }
     public void pokemon1Switch() {
-        moveSetter(pokemon1);
-        ownStats.setText(pokemon1Name +"     Level " + pokemon1.getLevel() + "\n\n Health: " +
-                pokemon1.getCurrentHealth() + "/" + pokemon1.getHealth());
-        mainTextArea.setText("You have switched to " + pokemon1Name);
+        moveSetter(activePokemon);
+        ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
+                activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
+        updateMoves();
         enemyAttack();
+
     }
     public void pokemon2Switch() {
         moveSetter(pokemon2);
-        ownStats.setText(pokemon2Name + "     Level " + pokemon2.getLevel() +"\n\n Health: " +
-                pokemon2.getCurrentHealth() + "/" + pokemon2.getHealth());
-        mainTextArea.setText("You have switched to " + pokemon2Name);
+        moveSetter(activePokemon);
+        ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
+                activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
+        updateMoves();
         enemyAttack();
 
     }
     public void pokemon3Switch() {
-        moveSetter(pokemon3);
-        ownStats.setText(pokemon3Name + "     Level " + pokemon3.getLevel() +"\n\n Health: " +
-                pokemon3.getCurrentHealth() + "/" + pokemon3.getHealth());
-        mainTextArea.setText("You have switched to " + pokemon3Name);
+        moveSetter(activePokemon);
+        ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
+                activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
+        updateMoves();
         enemyAttack();
+
     }
     public void pokemon4Switch() {
-        moveSetter(pokemon4);
-        ownStats.setText(pokemon4Name + "     Level " + pokemon4.getLevel() +"\n\n Health: " +
-                pokemon4.getCurrentHealth() + "/" + pokemon4.getHealth());
-        mainTextArea.setText("You have switched to " + pokemon4Name);
+        moveSetter(activePokemon);
+        ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
+                activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
+        updateMoves();
         enemyAttack();
+
     }
     public void pokemon5Switch() {
-        moveSetter(pokemon5);
-        ownStats.setText(pokemon5Name + "     Level " + pokemon5.getLevel() +"\n\n Health: " +
-                pokemon5.getCurrentHealth() + "/" + pokemon5.getHealth());
-        mainTextArea.setText("You have switched to " + pokemon5Name);
+        moveSetter(activePokemon);
+        ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
+                activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
+        updateMoves();
         enemyAttack();
+
     }
     public void pokemon6Switch() {
-        moveSetter(pokemon6);
-        ownStats.setText(pokemon6Name + "     Level " + pokemon6.getLevel() +"\n\n Health: " +
-                pokemon6.getCurrentHealth() + "/" + pokemon6.getHealth());
-        mainTextArea.setText("You have switched to " + pokemon6Name);
+        moveSetter(activePokemon);
+        ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
+                activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
+        updateMoves();
         enemyAttack();
+
     }
 
     private void buttonSetter(JButton button, String name, JPanel buttonPanel) {
@@ -1185,9 +1182,9 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
             }
             if (activePokemon.getCurrentHealth()<=0) {
                 if (!checkLose()) {
-                    switchScreen();
                     actionPanel.setVisible(false);
-                    movePanel.setVisible(false);
+                    switchPanel.setVisible(true);
+                    mainTextArea.setText("Who will you switch to");
                 } else {
                     mainTextArea.setText("You lose");
                     //say more stuff for lose
@@ -1213,13 +1210,16 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     }
 
     private void updateMoves() {
-        movePanel.remove(0);
-        movePanel.remove(0);
-        movePanel.remove(0);
-        movePanel.remove(0);
+        movePanel= new JPanel();
+        movePanel.setBounds(600, 700, 900, 300);
+        movePanel.setBackground(Color.black);
+        movePanel.setLayout(new GridLayout(2, 2));
+        movePanel.setVisible(false);
         movesButtonSetter(move1, move1Name,"move1", movePanel);
         movesButtonSetter(move2, move2Name,"move2",  movePanel);
         movesButtonSetter(move3, move3Name,"move3", movePanel);
         movesButtonSetter(move4, move4Name,"move4", movePanel);
+        con.add(movePanel);
+        movePanel.repaint();
     }
 }

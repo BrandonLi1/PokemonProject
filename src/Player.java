@@ -5,7 +5,7 @@ public class Player extends Space {
     public static ArrayList<Items> itembag = new ArrayList<>();
 
     public Player(String name) {
-        super(name.substring(0, 1)); // symbol is first initial
+        super(name); // symbol is first initial
         party = new PokemonType[6];
         for (int i = 0; i < 5; i++) {
             party[i] = new PokemonType(0, 0, "test");

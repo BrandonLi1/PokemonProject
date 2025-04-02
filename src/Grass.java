@@ -9,6 +9,7 @@ public class Grass extends PokemonType{
             setPower(60);
             int damage=(int)(checkDamage()*checkEffective(target));
             target.setCurrentHealth(target.getCurrentHealth()-damage);
+            this.setCurrentHealth(getCurrentHealth()+(int)(damage*.5));
         }
     }
 
@@ -16,7 +17,7 @@ public class Grass extends PokemonType{
         int totalDmg = 0;
         int shots = (int) (Math.random() * 4 + 2);
         setAccuracy(70);
-        setPower(20);
+        setPower(30);
         while (shots >= 0) {
             if (checkHit()) {
                 totalDmg += (int)(checkDamage()*checkEffective(target));

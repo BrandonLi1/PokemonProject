@@ -31,7 +31,7 @@ public class GridGame {
     private void createPlayer() {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine().toUpperCase();
-        player = new Player(name);
+        player = new Player("😎");
         if (name.equals("DRAGON")) {
             player.party[0]=new Fire(100, 297, "Charizard", "3", "n");
             player.party[1]=new Water(100, 299, "Blastoise", "3", "n");
@@ -56,17 +56,17 @@ public class GridGame {
         board=new Space[20][20];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                board[i][j]= new Space("_");
+                board[i][j]= new Space("⬜");
             }
         }
-        board[0][19]=new Space("G");
+        board[0][19]=new Space("\uD83C\uDFDF\uFE0F");
         board[19][0]=player;
-        board[19][19]=new Space("P");
+        board[19][19]=new Space("🏥");
         for (int i = 1; i < 19; i++) {
             for (int j = 18; j >0; j--) {
                 double x = Math.random();
                 if (x<=.3) {
-                    board[i][j]=new Space("#");
+                    board[i][j]=new Space("🌿");
                 }
             }
         }
@@ -88,7 +88,7 @@ public class GridGame {
         int count=0;
         while (board[0][19] != player) {
             if (board[19][19]!=player) {
-                board[19][19]=new Space("P");
+                board[19][19]=new Space("🏥");
             }
             printBoard();
                 System.out.print("Enter a direction(W, A, S, D): ");
@@ -96,10 +96,10 @@ public class GridGame {
                 if (move.equals("W")) {
                     if (y != 0) {
                         checkPokemon("W");
-                        if (count>=1 && temp.getSymbol().equals("#")) {
-                            board[y][x] = new Space("#");
+                        if (count>=1 && temp.getSymbol().equals("🌿")) {
+                            board[y][x] = new Space("🌿");
                         } else {
-                            board[y][x] = new Space("_");
+                            board[y][x] = new Space("⬜");
                         }
                         temp = board[y - 1][x];
                         board[y - 1][x] = player;
@@ -111,10 +111,10 @@ public class GridGame {
                     if (x != 0) {
                         checkPokemon("A");
 
-                        if (count>=1 && temp.getSymbol().equals("#")) {
-                            board[y][x] = new Space("#");
+                        if (count>=1 && temp.getSymbol().equals("🌿")) {
+                            board[y][x] = new Space("🌿");
                         } else {
-                            board[y][x] = new Space("_");
+                            board[y][x] = new Space("⬜");
                         }
                         temp = board[y][x - 1];
                         board[y][x - 1] = player;
@@ -126,10 +126,10 @@ public class GridGame {
                     if (y != 19) {
                         checkPokemon("S");
 
-                        if (count>=1 && temp.getSymbol().equals("#")) {
-                            board[y][x] = new Space("#");
+                        if (count>=1 && temp.getSymbol().equals("🌿")) {
+                            board[y][x] = new Space("🌿");
                         } else {
-                            board[y][x] = new Space("_");
+                            board[y][x] = new Space("⬜");
                         }
                         temp = board[y + 1][x];
                         board[y + 1][x] = player;
@@ -141,10 +141,10 @@ public class GridGame {
                     if (x != 19) {
                         checkPokemon("D");
 
-                        if (count>=1 && temp.getSymbol().equals("#")) {
-                            board[y][x] = new Space("#");
+                        if (count>=1 && temp.getSymbol().equals("🌿")) {
+                            board[y][x] = new Space("🌿");
                         } else {
-                            board[y][x] = new Space("_");
+                            board[y][x] = new Space("⬜");
                         }
                         temp = board[y][x + 1];
                         board[y][x + 1] = player;
@@ -157,10 +157,11 @@ public class GridGame {
                     player.party[i].setXp(25502500);
                     player.party[i].checkLevelUp();
                     player.party[i].setCurrentHealth(player.party[i].getHealth());
-                    board[19][0]=new Space("_");
+                    board[19][0]=new Space("⬜");
                     board[0][18]=player;
                     playerPosition();
                 }
+                temp=board[y][x];
                 count--;
             }
             count++;
@@ -170,22 +171,22 @@ public class GridGame {
     private void checkPokemon(String move) {
         playerPosition();
         if (move.equals("W")) {
-            if (board[y-1][x].getSymbol().equals("#")) {
+            if (board[y-1][x].getSymbol().equals("🌿")) {
                grassCheck();
             }
         }
         if (move.equals("A")) {
-            if (board[y][x-1].getSymbol().equals("#")) {
+            if (board[y][x-1].getSymbol().equals("🌿")) {
                 grassCheck();
             }
         }
         if (move.equals("S")) {
-            if (board[y+1][x].getSymbol().equals("#")) {
+            if (board[y+1][x].getSymbol().equals("🌿")) {
                grassCheck();
             }
         }
         if (move.equals("D")) {
-            if (board[y][x+1].getSymbol().equals("#")) {
+            if (board[y][x+1].getSymbol().equals("🌿")) {
               grassCheck();
             }
         }
@@ -213,5 +214,9 @@ public class GridGame {
                 }
             }
         }
+    }
+
+    private void gymFight() {
+        //construct gym thing
     }
 }
