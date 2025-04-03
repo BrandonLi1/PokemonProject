@@ -41,7 +41,7 @@ public class GridGame {
         player = new Player("😎");
         if (name.equals("DRAGON")) {
             player.party[0]=new Fire(100, 297, "Charizard", "3", "n");
-            player.party[1]=new Water(100, 299, "Blastoise", "3", "n");
+            player.party[1]=new Water(100, 10, "Blastoise", "3", "n");
             player.party[2]=new Grass(100, 301, "Venusaur", "3", "n");
         } else {
             StartWindow x =  new StartWindow();
@@ -230,7 +230,7 @@ public class GridGame {
     }
 
     public void encounter() {//wip
-       FightWindow x = new FightWindow(new Grass(12,100,"bulb","2","y"));
+       FightWindow x = new FightWindow(new Water(30,10000,"bulb","2","y"));
        x.createGameScreen();
         try {
             synchronized (this) {

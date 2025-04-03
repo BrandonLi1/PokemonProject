@@ -10,6 +10,9 @@ public class Grass extends PokemonType{
             int damage=(int)(checkDamage()*checkEffective(target));
             target.setCurrentHealth(target.getCurrentHealth()-damage);
             this.setCurrentHealth(getCurrentHealth()+(int)(damage*.5));
+            if (getCurrentHealth()>getHealth()) {
+                setCurrentHealth(getHealth());
+            }
         }
     }
 

@@ -15,7 +15,7 @@ public class Water extends PokemonType{
     public void Aquaring(PokemonType target){
         setAccuracy(100);
         if (checkHit()) {
-            setHealth(getCurrentHealth() + 10);
+            setCurrentHealth(getCurrentHealth() + 10);
             if (getCurrentHealth()>getHealth()) {
                 setCurrentHealth(getHealth());
             }

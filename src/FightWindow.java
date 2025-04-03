@@ -68,28 +68,33 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
 
     public void switchScreen() {
+        switchPanel = new JPanel();
+        switchPanel.setBounds(600, 0, 400, 800);
+        switchPanel.setBackground(Color.black);
+        switchPanel.setLayout(new GridLayout(3, 2));
         switchPanel.setVisible(true);
         actionPanel.setVisible(false);
         movePanel.setVisible(false);
+        backPanel.setVisible(true);
         if (pokemon1!=null && !pokemon1Name.equals("test") && activePokemon!=pokemon1) {
             buttonSetter(pokemon1Button, pokemon1Name, switchPanel);
         }
         if (pokemon2!=null && !pokemon2Name.equals("test") && activePokemon!=pokemon2) {
             buttonSetter(pokemon2Button, pokemon2Name, switchPanel);
-            }
+        }
         if (pokemon3!=null && !pokemon3Name.equals("test") && activePokemon!=pokemon3) {
             buttonSetter(pokemon3Button, pokemon3Name, switchPanel);
-            }
+        }
         if (pokemon4!=null && !pokemon4Name.equals("test") && activePokemon!=pokemon4) {
             buttonSetter(pokemon4Button, pokemon4Name, switchPanel);
-         }
+        }
         if (pokemon5!=null && !pokemon5Name.equals("test") && activePokemon!=pokemon5) {
             buttonSetter(pokemon5Button, pokemon5Name, switchPanel);
         }
         if (pokemon6!=null && !pokemon6Name.equals("test") && activePokemon!=pokemon6) {
             buttonSetter(pokemon6Button, pokemon6Name, switchPanel);
         }
-        switchPanel.setVisible(true);
+        switchPanel.repaint();
         con.add(switchPanel);
         mainTextArea.setText("Who will you switch to");
     }
@@ -135,12 +140,6 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         backPanel.setBackground(Color.black);
         backPanel.setVisible(false);
 
-        switchPanel = new JPanel();
-        switchPanel.setBounds(600, 0, 400, 800);
-        switchPanel.setBackground(Color.black);
-        switchPanel.setLayout(new GridLayout(3, 2));
-        switchPanel.setVisible(false);
-
         //textAreas
         mainTextArea=new JTextArea();
         mainTextArea.setEditable(false);
@@ -174,6 +173,11 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyStats.setLineWrap(true);
         enemyStatsPanel.add(enemyStats);
 
+        switchPanel = new JPanel();
+        switchPanel.setBounds(600, 0, 400, 800);
+        switchPanel.setBackground(Color.black);
+        switchPanel.setLayout(new GridLayout(3, 2));
+
         //layover or replace action panel
         movePanel= new JPanel();
         movePanel.setBounds(600, 700, 900, 300);
@@ -196,17 +200,14 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         public void actionPerformed(ActionEvent event) {
             String e = event.getActionCommand();
             if (e.equals("bag")) {
-                backPanel.setVisible(true);
                 bag();
             } else if (e.equals("pokemon")) {
-                backPanel.setVisible(true);
                 Switch();
             } else if (e.equals("run")) {
                 if (!Gym.gymFight) {
                     run();
                 }
             } else if (e.equals("fight")) {
-                backPanel.setVisible(true);
                 fight();
             } else if (e.equals("move1")) {
                 move1();
@@ -246,6 +247,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     pokemon1Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
+                    backPanel.setVisible(false);
                 }
             }
             else if (e.equals(pokemon2Name.toLowerCase())) {
@@ -254,6 +256,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     pokemon2Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
+                    backPanel.setVisible(false);
                 }
             }
             else if (e.equals(pokemon3Name.toLowerCase())) {
@@ -262,6 +265,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     pokemon3Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
+                    backPanel.setVisible(false);
                 }
             }
             else if (e.equals(pokemon4Name.toLowerCase())) {
@@ -270,6 +274,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     pokemon4Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
+                    backPanel.setVisible(false);
                 }
             }
             else if (e.equals(pokemon5Name.toLowerCase())) {
@@ -278,6 +283,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     pokemon5Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
+                    backPanel.setVisible(false);
                 }
             }
             else if (e.equals(pokemon6Name.toLowerCase())) {
@@ -286,19 +292,20 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                     pokemon6Switch();
                     switchPanel.setVisible(false);
                     actionPanel.setVisible(true);
+                    backPanel.setVisible(false);
                 }
             } else if (e.equals("pokeball") && !Gym.gymFight) {
                 actionPanel.setVisible(true);
                 itemPanel.setVisible(false);
-//                CatchPokemon Catch = new CatchPokemon();
+                backPanel.setVisible(false);
+                CatchPokemon Catch = new CatchPokemon();
                 if (CatchPokemon.capture()) {
                     screen.dispose();
                 }
-
-
             } else if (e.equals("potion")) {
                 actionPanel.setVisible(true);
                 itemPanel.setVisible(false);
+                backPanel.setVisible(false);
                 if(activePokemon.getCurrentHealth()>0) {
                   activePokemon.setCurrentHealth(activePokemon.getHealth() + 25);
                     if (activePokemon.getCurrentHealth()>activePokemon.getHealth()) {
@@ -322,10 +329,12 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         }
     }
     public void bag() {
+        backPanel.setVisible(true);
         actionPanel.setVisible(false);
         itemPanel.setVisible(true);
     }
     public void fight() {
+        backPanel.setVisible(true);
         actionPanel.setVisible(false);
         movePanel.setVisible(true);
     }
@@ -334,6 +343,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
     }
 
     public void move1() {
+        backPanel.setVisible(false);
         moveCheck(activePokemon, enemy, move1Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
@@ -342,6 +352,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyAttack();
     }
     public void move2() {
+        backPanel.setVisible(false);
         moveCheck(activePokemon, enemy, move2Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
@@ -350,6 +361,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyAttack();
     }
     public void move3() {
+        backPanel.setVisible(false);
         moveCheck(activePokemon, enemy, move3Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
@@ -359,6 +371,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyAttack();
     }
     public void move4() {
+        backPanel.setVisible(false);
         moveCheck(activePokemon, enemy, move4Name);
         enemyStats.setText(enemy.getName() +"     Level " + enemy.getLevel() +  "\n\n Health: " +
                 enemy.getCurrentHealth() + "/" + enemy.getHealth());
@@ -368,6 +381,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         enemyAttack();
     }
     public void pokemon1Switch() {
+        backPanel.setVisible(false);
         moveSetter(activePokemon);
         ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
                 activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
@@ -376,6 +390,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
     }
     public void pokemon2Switch() {
+        backPanel.setVisible(false);
         moveSetter(pokemon2);
         moveSetter(activePokemon);
         ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
@@ -385,6 +400,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
     }
     public void pokemon3Switch() {
+        backPanel.setVisible(false);
         moveSetter(activePokemon);
         ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
                 activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
@@ -393,6 +409,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
     }
     public void pokemon4Switch() {
+        backPanel.setVisible(false);
         moveSetter(activePokemon);
         ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
                 activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
@@ -401,6 +418,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
     }
     public void pokemon5Switch() {
+        backPanel.setVisible(false);
         moveSetter(activePokemon);
         ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
                 activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
@@ -409,6 +427,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
 
     }
     public void pokemon6Switch() {
+        backPanel.setVisible(false);
         moveSetter(activePokemon);
         ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() + "\n\n Health: " +
                 activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
@@ -522,6 +541,26 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         movesButtonSetter(move4, move4Name,"move4", movePanel);
         buttonSetter(pokeball,"pokeball", itemPanel);
         buttonSetter(potion,"potion",itemPanel);
+
+        if (pokemon1!=null && !pokemon1Name.equals("test") && activePokemon!=pokemon1) {
+            buttonSetter(pokemon1Button, pokemon1Name, switchPanel);
+        }
+        if (pokemon2!=null && !pokemon2Name.equals("test") && activePokemon!=pokemon2) {
+            buttonSetter(pokemon2Button, pokemon2Name, switchPanel);
+        }
+        if (pokemon3!=null && !pokemon3Name.equals("test") && activePokemon!=pokemon3) {
+            buttonSetter(pokemon3Button, pokemon3Name, switchPanel);
+        }
+        if (pokemon4!=null && !pokemon4Name.equals("test") && activePokemon!=pokemon4) {
+            buttonSetter(pokemon4Button, pokemon4Name, switchPanel);
+        }
+        if (pokemon5!=null && !pokemon5Name.equals("test") && activePokemon!=pokemon5) {
+            buttonSetter(pokemon5Button, pokemon5Name, switchPanel);
+        }
+        if (pokemon6!=null && !pokemon6Name.equals("test") && activePokemon!=pokemon6) {
+            buttonSetter(pokemon6Button, pokemon6Name, switchPanel);
+        }
+
     }
 
     private void moveSetter(PokemonType pokemon) {//code with parameter so enemy can also use moves
@@ -1205,21 +1244,27 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         }
         if (activePokemon.getClass()==Grass.class) {
             if (x.equals("Bullet Seed")) {
+                assert active instanceof Grass;
                 ((Grass) active).bulletSeed(target);
             }
             if (x.equals("Magical Leaf")) {
+                assert active instanceof Grass;
                 ((Grass) active).magicalLeaf(target);
             }
             if (x.equals("Razor Leaf")) {
+                assert active instanceof Grass;
                 ((Grass) active).razorLeaf(target);
             }
             if (x.equals("Leaf Tornado")) {
+                assert active instanceof Grass;
                 ((Grass) active).leafTornado(target);
             }
             if (x.equals("Solar Beam")) {
+                assert active instanceof Grass;
                 ((Grass) active).solarBeam(target);
             }
             if (x.equals("Absorb")) {
+                assert active instanceof Grass;
                 ((Grass) active).absorb(target);
             }
         }
@@ -1243,15 +1288,20 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                         activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
             }
             if (activePokemon.getCurrentHealth()<=0) {
+                ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() +  "\n\n Health: " +
+                        activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
                 if (!checkLose()) {
                     actionPanel.setVisible(false);
                     switchPanel.setVisible(true);
+                    switchScreen();
                     mainTextArea.setText("Who will you switch to");
                 } else {
                     mainTextArea.setText("You lose");
                     screen.dispose();
                 }
             }
+        ownStats.setText(activePokemon.getName() +"     Level " + activePokemon.getLevel() +  "\n\n Health: " +
+                activePokemon.getCurrentHealth() + "/" + activePokemon.getHealth());
     }
     public boolean checkLose() {
         if ((pokemon1==null || pokemon1.getCurrentHealth()<=0)

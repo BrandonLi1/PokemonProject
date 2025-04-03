@@ -1,5 +1,6 @@
 public class CatchPokemon {
     public CatchPokemon(){
+        capture();
     }
     public static boolean capture(){
         if (Player.pokeballamt() > 0){
@@ -9,14 +10,14 @@ public class CatchPokemon {
                 System.out.println("failed to catch pokemon");
                 return false;
             } else {
-                int x = 0;
+                int x = 7;
                 for (int i = 0; i < 6; i++) {
                     if (Player.party[i].getName().equals("test")) {
                         x=i;
                         break;
                     }
                 }
-                if (Player.party[x].getName().equals("test")) {
+                if (x<=5 && Player.party[x].getName().equals("test")) {
                     Player.party[x] = FightWindow.enemy;
                     Player.removepokeball();
                     System.out.println("Caught the pokemon");

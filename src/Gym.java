@@ -1,7 +1,8 @@
 public class Gym{
-    public static boolean gymFight=true;
+    public static boolean gymFight;
     //test
     public Gym() {
+        gymFight=true;
         FightWindow fight1 = new FightWindow(new Fire(100, 999, "Charizard", "3", "n"));
         fight1.createGameScreen();
         pause();
