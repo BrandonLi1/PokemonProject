@@ -19,16 +19,19 @@ public class Gym{
        }
        if (alive()) {
             FightWindow fight5 = new FightWindow(new Grass(21, 50, "Grovyle", "2", "y"));
+            fight5.createGameScreen();
             pause();
        }
        if (alive()) {
             FightWindow fight6 = new FightWindow(new Grass(22, 90, "Tortera", "3", "n"));
-        }
-       if (alive()) {
-            FightWindow fight4 = new FightWindow(new Water(19, 100, "Kyogre(suppressed)", "2", "y"));
+            fight6.createGameScreen();
             pause();
-        }
-
+       }
+       if (alive()) {
+           FightWindow fight4 = new FightWindow(new Water(19, 100, "Kyogre(suppressed)", "2", "y"));
+           fight4.createGameScreen();
+           pause();
+       }
 
         if (fight1.checkLose()) {
             System.out.println("You have failed");

@@ -194,6 +194,7 @@ public class GridGame {
                 System.out.println("Come back soon");
                 board[19][18]=player;
                 board[19][19]=new Space("🏥");
+                playerPosition();
             }
         }
         Gym gym = new Gym();

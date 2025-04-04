@@ -213,7 +213,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 move1();
                 if (enemy.getCurrentHealth()<=0) {
                     mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
-                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points" + "\n close the window to exit");
                     activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
                     activePokemon.checkLevelUp();
                 }
@@ -221,7 +221,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 move2();
                 if (enemy.getCurrentHealth()<=0) {
                     mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
-                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points" + "\n close the window to exit");
                     activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
                     activePokemon.checkLevelUp();
                 }
@@ -229,7 +229,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 move3();
                 if (enemy.getCurrentHealth()<=0) {
                     mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
-                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points" + "\n close the window to exit");
                     activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
                     activePokemon.checkLevelUp();
                 }
@@ -237,7 +237,7 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 move4();
                 if (enemy.getCurrentHealth()<=0) {
                     mainTextArea.setText("The wild " + enemy.getName() + " fainted! \n"
-                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points");
+                            + activePokemon.getName() + " gained " + enemy.getLevel()*10 + " Exp. points" + "\n close the window to exit");
                     activePokemon.setXp((int) (activePokemon.getXp()+enemy.getLevel()*10));
                     activePokemon.checkLevelUp();
                 }
