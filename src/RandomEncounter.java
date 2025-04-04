@@ -20,10 +20,10 @@ public class RandomEncounter {
                 first.add(poke.get(i));
             }
         }
-        if(random >= 5){
+        if(random <= 5){
             int random3 = (int)((Math.random()*third.size()) + 0);
             return (third.get(random3));
-        } else if(random >= 30){
+        } if(random <= 30){
             int random2 = (int)((Math.random()*second.size()) + 0);
             return (second.get(random2));
         } else {

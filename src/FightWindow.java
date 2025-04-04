@@ -300,6 +300,8 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
                 backPanel.setVisible(false);
                 if (CatchPokemon.capture()) {
                     screen.dispose();
+                } else {
+                    enemyAttack();
                 }
             } else if (e.equals("potion")) {
                 actionPanel.setVisible(true);
@@ -1245,27 +1247,21 @@ public class FightWindow {//https://www.youtube.com/playlist?list=PL_QPQmz5C6WUM
         }
         if (active.getClass()==Grass.class) {
             if (x.equals("Bullet Seed")) {
-                assert active instanceof Grass;
                 ((Grass) active).bulletSeed(target);
             }
             if (x.equals("Magical Leaf")) {
-                assert active instanceof Grass;
                 ((Grass) active).magicalLeaf(target);
             }
             if (x.equals("Razor Leaf")) {
-                assert active instanceof Grass;
                 ((Grass) active).razorLeaf(target);
             }
             if (x.equals("Leaf Tornado")) {
-                assert active instanceof Grass;
                 ((Grass) active).leafTornado(target);
             }
             if (x.equals("Solar Beam")) {
-                assert active instanceof Grass;
                 ((Grass) active).solarBeam(target);
             }
             if (x.equals("Absorb")) {
-                assert active instanceof Grass;
                 ((Grass) active).absorb(target);
             }
         }

@@ -19,17 +19,16 @@ public class CreatePokemon {
                 String data = fileScanner.nextLine();
                 String[] splitdata = data.split(",");
                 String name = splitdata[0];
-                String pokedex = splitdata[1];
                 String health = splitdata[2];
                 String type = splitdata[3];
                 String stage = splitdata[4];
                 String evolve = splitdata[5];
                 if (type.equals("Fire")) {
-                    pokemon.add(new Fire(0, Integer.parseInt(health), name, stage, evolve));
+                    pokemon.add(new Fire((int)(Math.random()*18+1), Integer.parseInt(health), name, stage, evolve));
                 } else if (type.equals("Water")) {
-                    pokemon.add(new Water(0, Integer.parseInt(health), name, stage, evolve));
+                    pokemon.add(new Water((int)(Math.random()*18+1), Integer.parseInt(health), name, stage, evolve));
                 } else {
-                    pokemon.add(new Grass(0, Integer.parseInt(health), name, stage, evolve));
+                    pokemon.add(new Grass((int)(Math.random()*18+1), Integer.parseInt(health), name, stage, evolve));
                 }
             }
             fileScanner.close();

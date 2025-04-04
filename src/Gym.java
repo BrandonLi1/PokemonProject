@@ -3,30 +3,33 @@ public class Gym{
     //test
     public Gym() {
         gymFight=true;
-        FightWindow fight1 = new FightWindow(new Fire(100, 999, "Charizard", "3", "n"));
+        FightWindow fight1 = new FightWindow(new Fire(18, 43, "Charmander", "1", "y"));
         fight1.createGameScreen();
         pause();
-        if (alive()) {
-            FightWindow fight2 = new FightWindow(new Fire(30, 100, "Charizard", "3", "n"));
-            fight2.createGameScreen();
-            pause();
-        }
-     /*  if (alive()) {
-            FightWindow fight3 = new FightWindow(new Water());
+
+       if (alive()) {
+            FightWindow fight3 = new FightWindow(new Water(13, 30, "Squirtle", "1", "y"));
             fight3.createGameScreen();
             pause();
         }
        if (alive()) {
-            FightWindow fight4 = new FightWindow(new Water());
+            FightWindow fight2 = new FightWindow(new Fire(20, 38, "Cyndaquil", "1", "y"));
+            fight2.createGameScreen();
             pause();
+       }
+       if (alive()) {
+            FightWindow fight5 = new FightWindow(new Grass(21, 50, "Grovyle", "2", "y"));
+            pause();
+       }
+       if (alive()) {
+            FightWindow fight6 = new FightWindow(new Grass(22, 90, "Tortera", "3", "n"));
         }
        if (alive()) {
-            FightWindow fight5 = new FightWindow(new Grass());
+            FightWindow fight4 = new FightWindow(new Water(19, 100, "Kyogre(suppressed)", "2", "y"));
             pause();
         }
-       if (alive()) {
-            FightWindow fight6 = new FightWindow(new Grass());
-        }*/
+
+
         if (fight1.checkLose()) {
             System.out.println("You have failed");
             System.exit(0);

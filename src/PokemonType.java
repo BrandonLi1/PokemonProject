@@ -84,6 +84,24 @@ public class PokemonType {
             setHealth(getHealth()+2);
             currentHealth=getHealth();
         }
+        if (name.equals("Charmander") && level==16) {
+            setName("Charmeleon");
+        }
+        if (name.equals("Charmeleon") && level==36) {
+            setName("Charizard");
+        }
+        if (name.equals("Bulbasaur") && level==16) {
+            setName("Ivysaur");
+        }
+        if (name.equals("Ivysaur") && level==32) {
+            setName("Venusaur");
+        }
+        if (name.equals("Squirtle")) {
+            setName("Wartortle");
+        }
+        if (name.equals("Wartortle")) {
+            setName("Blastoise");
+        }
     }
 
     public int getPower() {

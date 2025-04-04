@@ -32,7 +32,7 @@ public class Fire extends PokemonType{
             setPower(80);
             int damage=(int)(checkDamage()*checkEffective(target));
             target.setCurrentHealth(target.getCurrentHealth()-damage);
-            if (Math.random()*10<=2&& !(target instanceof Fire)) {
+            if (Math.random()*10<=2 && !(target instanceof Fire)) {
                 target.setBurning(true);
             }
         }
