@@ -224,7 +224,7 @@ public class GridGame {
     }
 
     public void grassCheck() {
-        int x=(int)(Math.random());
+        int x=(int)(Math.random()*10);
         if (x==0) {
             encounter();
         }
