@@ -11,12 +11,14 @@ public class PokemonType {
     private double requiredXP;
     private int currentHealth;
     private boolean burning;
+    private String stage;
     public int[] moveList = new int[4];
     private ArrayList<Integer> storage = new ArrayList<>();
-    public PokemonType(int level, int health, String name) {
+    public PokemonType(int level, int health, String name, String stage) {
         this.level=level;
         this.health=health;
         this.name=name;
+        this.stage = stage;
         burning=false;
         requiredXP = Math.pow(level, 3);
         int i =0;
@@ -69,6 +71,9 @@ public class PokemonType {
 
     public void setXp(int xp) {
         this.xp = xp;
+    }
+    public String getStage(){
+        return stage;
     }
 
     public void checkLevelUp() {
