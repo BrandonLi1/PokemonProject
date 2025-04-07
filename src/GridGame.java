@@ -203,6 +203,18 @@ public class GridGame {
                 playerPosition();
             }
         }
+        try {
+            Thread.sleep(500);
+            System.out.print("You see the gym leader");
+            for (int i = 0; i < 3; i++) {
+                System.out.print(".");
+                Thread.sleep(500);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println();
+        ASCIIART.gymLeader();
 
         Gym gym = new Gym();
     }
