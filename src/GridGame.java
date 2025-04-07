@@ -29,7 +29,8 @@ public class GridGame {
     private void createPlayer() {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine().toUpperCase();
-        String introduction = "The sun rises over " + coloredText.YELLOW + "Velmara" + coloredText.RESET + ", casting golden light across the land. " +
+        String introduction =
+                "The sun rises over " + coloredText.YELLOW + "Velmara" + coloredText.RESET + ", casting golden light across the land. " +
                 "\nToday is the day you've been waiting for, the day you finally begin your journey as a " + coloredText.GREEN + "Pokémon Trainer" + coloredText.RESET + "!" +
                 "\nWith your first Pokémon by your side, you set out toward " + coloredText.CYAN + "Crestforge City" + coloredText.RESET + "," +
                 "\nwhere a powerful " + coloredText.RED + "Gym Leader" + coloredText.RESET + " awaits. " +
@@ -215,7 +216,25 @@ public class GridGame {
         }
         System.out.println();
         ASCIIART.gymLeader();
-
+        System.out.println();
+        String gymDialogue =
+                        coloredText.RED + "Gym Leader" + coloredText.RESET + ": Took you long enough. I was starting to think you got lost.\n" +
+                        coloredText.GREEN + "Trainer" + coloredText.RESET + ": Had to take a few detours. Some Pokémon on the way wouldn’t let me pass without a battle.\n" +
+                        coloredText.RED + "Gym Leader" + coloredText.RESET + ": That’s how it goes. Every step forward should be earned, not given. And now you’re here, facing the final obstacle.\n" +
+                        coloredText.GREEN + "Trainer" + coloredText.RESET + ": I didn’t come all this way to turn back now.\n" +
+                        coloredText.RED + "Gym Leader" + coloredText.RESET + ": Good. Because I don’t hold back, and I don’t expect my challengers to, either. This isn’t just about raw strength—it’s about" +
+                                          "\n            how well you and your Pokémon work together under pressure.\n" +
+                        coloredText.GREEN + "Trainer" + coloredText.RESET + ": We’ve been through plenty already. We’re ready for whatever you throw at us.\n" +
+                        coloredText.RED + "Gym Leader" + coloredText.RESET + ": Then let’s find out if you’ve really got what it takes.\n" +
+                        coloredText.GREEN + "Trainer" + coloredText.RESET + ": Let’s battle!\n";
+        try {
+            for (int i = 0; i < gymDialogue.length(); i++) {
+                System.out.print(gymDialogue.charAt(i));
+                Thread.sleep(50);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Gym gym = new Gym();
     }
     private void checkPokemon(String move) {
