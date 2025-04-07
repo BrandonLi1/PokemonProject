@@ -20,15 +20,6 @@ public class GridGame {
 //            System.out.println(CreatePokemon.getPokemon().get(i).getName());
 //            System.out.println(CreatePokemon.getPokemon().get(i).getClass());
 //        }
-
-        //introduction
-        System.out.println("The sun rises over " + coloredText.YELLOW + "Velmara" + coloredText.RESET + ", casting golden light across the land. " +
-                "\nToday is the day you've been waiting for, the day you finally being your journey as a " + coloredText.GREEN + "Pokemon Trainer" + coloredText.RESET + "!" +
-                "\nWith your first Pokemon by your side, you set out toward " + coloredText.CYAN + "Crestforge City" + coloredText.RESET + "," +
-                "\nwhere a powerful " + coloredText.RED + "Gym Leader" + coloredText.RESET + " awaits. " +
-                "\nBut the road won't be easy. Wild Pokemon lurk in the tall grass. To prove yourself, you'll need to train and win battles. " +
-                "\nWill you rise to the challenge and claim victory at the gym? Your path to greatness starts now!");
-
         setupBoard();
         play();
 
@@ -38,6 +29,21 @@ public class GridGame {
     private void createPlayer() {
         System.out.print("Please enter your name: ");
         String name = scanner.nextLine().toUpperCase();
+        String introduction = "The sun rises over " + coloredText.YELLOW + "Velmara" + coloredText.RESET + ", casting golden light across the land. " +
+                "\nToday is the day you've been waiting for, the day you finally begin your journey as a " + coloredText.GREEN + "Pokémon Trainer" + coloredText.RESET + "!" +
+                "\nWith your first Pokémon by your side, you set out toward " + coloredText.CYAN + "Crestforge City" + coloredText.RESET + "," +
+                "\nwhere a powerful " + coloredText.RED + "Gym Leader" + coloredText.RESET + " awaits. " +
+                "\nBut the road won't be easy. Wild Pokémon lurk in the tall grass. To prove yourself, you'll need to train and win battles. " +
+                "\nWill you rise to the challenge and claim victory at the gym? Your path to greatness starts now!";
+        try {
+            for (int i = 0; i < introduction.length(); i++) {
+                System.out.print(introduction.charAt(i));
+                Thread.sleep(50);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println();
         player = new Player("😎");
         if (name.equals("DRAGON")) {
             player.party[0]=new Fire(100, 297, "Charizard", "3", "n");
@@ -197,6 +203,7 @@ public class GridGame {
                 playerPosition();
             }
         }
+
         Gym gym = new Gym();
     }
     private void checkPokemon(String move) {
